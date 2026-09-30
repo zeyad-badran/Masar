@@ -5554,3 +5554,18 @@ html[dir="ltr"] .rewards-points-value-row {
 html[dir="ltr"] .assistant-input-wrapper {
   direction: ltr;
 }
+
+#netlify-drawer,
+[data-netlify-drawer],
+[data-netlify-badge],
+.netlify-badge,
+iframe[title*="Netlify" i],
+iframe[src*="netlify" i],
+div[class*="netlify-drawer" i],
+div[id*="netlify-drawer" i],
+a[href*="netlify.com"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
