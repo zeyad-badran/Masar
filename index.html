@@ -14,7 +14,7 @@
   <link rel="preload" as="image" href="assets/images/emblem.png">
   <link rel="preload" as="image" href="assets/images/char_screen1.png">
 
-  <link rel="stylesheet" href="css/style.css?v=17">
+  <link rel="stylesheet" href="css/style.css?v=25">
 </head>
 <body>
   <div class="app-viewport">
@@ -111,9 +111,7 @@
           </article>
 
           <article class="profile-slide" id="profile-slide-2" data-step="2" aria-hidden="true">
-            <div class="profile-top-bar">
-              <button type="button" class="btn-skip" aria-label="تخطي الخطوة">تخطي</button>
-            </div>
+            <div class="profile-top-bar"></div>
 
             <div class="age-content">
               <h2 class="profile-question">عاشت الأسامي! عشان أعطيك مسارك<br>المناسب، بحتاج أعرف فئتك العمرية؟</h2>
@@ -2335,146 +2333,57 @@
 
         <div class="interactive-map-wrapper">
           <div class="jordan-map-canvas" id="jordanMapCanvas">
+            <img src="assets/images/jordan_map.jpg" alt="خريطة الأردن التفاعلية" class="jordan-vector-map-bg-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; transform: scale(1.28); transform-origin: center center; pointer-events: none; z-index: 1;" aria-hidden="true">
 
-            <svg class="jordan-vector-map-bg" viewBox="0 0 340 460" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs>
-                <linearGradient id="jordanLandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#FDFBF7"/>
-                  <stop offset="35%" stop-color="#F7EEDF"/>
-                  <stop offset="70%" stop-color="#EFE2CE"/>
-                  <stop offset="100%" stop-color="#E5D3B8"/>
-                </linearGradient>
-                <linearGradient id="deadSeaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#38BDF8"/>
-                  <stop offset="50%" stop-color="#0284C7"/>
-                  <stop offset="100%" stop-color="#0369A1"/>
-                </linearGradient>
-                <linearGradient id="aqabaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0284C7"/>
-                  <stop offset="100%" stop-color="#075985"/>
-                </linearGradient>
-                <filter id="jordanShadow" x="-8%" y="-6%" width="120%" height="120%">
-                  <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#85122D" flood-opacity="0.09"/>
-                </filter>
-              </defs>
-
-              <path d="M20 60 H320 M20 140 H320 M20 220 H320 M20 300 H320 M20 380 H320" stroke="#E6DCCE" stroke-width="0.75" stroke-dasharray="3 4" opacity="0.6"/>
-              <path d="M60 20 V440 M140 20 V440 M220 20 V440 M300 20 V440" stroke="#E6DCCE" stroke-width="0.75" stroke-dasharray="3 4" opacity="0.6"/>
-
-              <path class="jordan-land-polygon" filter="url(#jordanShadow)" d="
-                M 85 45
-                C 92 40, 115 36, 135 38
-                L 170 42
-                L 230 56
-                L 315 70
-                L 318 115
-                L 268 195
-                L 228 275
-                L 175 365
-                L 128 390
-                L 98 420
-                L 92 400
-                L 86 345
-                L 80 270
-                L 76 245
-                C 74 215, 72 185, 76 160
-                L 79 110
-                L 83 65
-                Z
-              " fill="url(#jordanLandGrad)" stroke="#C8B395" stroke-width="2" stroke-linejoin="round"/>
-
-              <path d="M 85 62 Q 102 88 98 125 T 92 175" fill="none" stroke="#D3BF9F" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-              <path d="M 94 68 Q 110 98 106 138 T 102 185" fill="none" stroke="#D3BF9F" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
-              <path d="M 82 215 Q 94 255 90 295 T 88 345" fill="none" stroke="#D3BF9F" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-              <path d="M 92 225 Q 104 270 100 315 T 96 365" fill="none" stroke="#D3BF9F" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
-
-              <path d="M 83 65 Q 80 110 76 160" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
-              <text x="32" y="112" fill="#0284C7" font-size="8.5" font-family="'Alexandria', sans-serif" font-weight="600" opacity="0.9">نهر الأردن 💧</text>
-
-              <path class="dead-sea-body" d="
-                M 76 160
-                C 70 175, 68 200, 70 225
-                C 72 240, 75 248, 78 248
-                C 81 248, 83 240, 82 225
-                C 81 200, 79 175, 76 160
-                Z
-              " fill="url(#deadSeaGrad)" stroke="#0284C7" stroke-width="1.5"/>
-              <text x="18" y="206" fill="#0369A1" font-size="9" font-family="'Alexandria', sans-serif" font-weight="700">البحر الميت 🌊</text>
-
-              <path d="M 84 415 L 94 425 L 80 445 L 65 445 Z" fill="url(#aqabaGrad)" stroke="#0284C7" stroke-width="1.2"/>
-              <text x="24" y="432" fill="#0284C7" font-size="8.5" font-family="'Alexandria', sans-serif" font-weight="700">خليج العقبة 🤿</text>
-
-              <path class="jordan-trail-path" d="
-                M 96 72
-                L 92 125
-                L 120 132
-                L 110 172
-                L 80 215
-                L 95 265
-                L 88 320
-                L 110 370
-                L 92 412
-              " fill="none" stroke="#85122D" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 4" opacity="0.7"/>
-
-              <text x="195" y="185" fill="#B39E82" font-size="11.5" font-family="'Alexandria', sans-serif" font-weight="600" opacity="0.65">البادية الشرقية 🏜️</text>
-
-              <g transform="translate(285, 385)">
-                <circle cx="0" cy="0" r="17" fill="#FFFFFF" fill-opacity="0.85" stroke="#D5C5B0" stroke-width="1"/>
-                <polygon points="0,-12 3.5,0 0,2.5 -3.5,0" fill="#85122D"/>
-                <polygon points="0,12 3.5,0 0,-2.5 -3.5,0" fill="#A89F91"/>
-                <text x="-3" y="-14" font-size="8.5" font-family="'Alexandria', sans-serif" font-weight="700" fill="#85122D">ش</text>
-              </g>
-            </svg>
-
-            <button type="button" class="map-pin-btn" style="top: 13%; right: 62%;" data-pin-id="jerash" data-region="north" title="جرش وعجلون">
+            <button type="button" class="map-pin-btn" style="top: 24%; right: 65%;" data-pin-id="jerash" data-region="north" title="جرش وعجلون">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🏛️</span>
               <span class="map-pin-label">جرش</span>
             </button>
 
-            <button type="button" class="map-pin-btn active" style="top: 24%; right: 65%;" data-pin-id="salt" data-region="central" title="مدينة السلط">
+            <button type="button" class="map-pin-btn active" style="top: 31%; right: 68%;" data-pin-id="salt" data-region="central" title="مدينة السلط">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🏡</span>
               <span class="map-pin-label">السلط</span>
             </button>
 
-            <button type="button" class="map-pin-btn" style="top: 26%; right: 54%;" data-pin-id="amman" data-region="central" title="عمان - جبل القلعة">
+            <button type="button" class="map-pin-btn" style="top: 34%; right: 48%;" data-pin-id="amman" data-region="central" title="عمان - جبل القلعة">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🌅</span>
               <span class="map-pin-label">عمّان</span>
             </button>
 
-            <button type="button" class="map-pin-btn" style="top: 35%; right: 58%;" data-pin-id="madaba" data-region="central" title="مادبا ووادي الهيدان">
+            <button type="button" class="map-pin-btn" style="top: 42%; right: 60%;" data-pin-id="madaba" data-region="central" title="مادبا ووادي الهيدان">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🎨</span>
               <span class="map-pin-label">مادبا</span>
             </button>
 
-            <button type="button" class="map-pin-btn" style="top: 45%; right: 68%;" data-pin-id="mujib" data-region="central" title="وادي الموجب">
+            <button type="button" class="map-pin-btn" style="top: 47%; right: 74%;" data-pin-id="mujib" data-region="central" title="وادي الموجب">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🧗</span>
               <span class="map-pin-label">الموجب</span>
             </button>
 
-            <button type="button" class="map-pin-btn" style="top: 56%; right: 63%;" data-pin-id="karak" data-region="south" title="وادي بن حماد والكرك">
+            <button type="button" class="map-pin-btn" style="top: 55%; right: 64%;" data-pin-id="karak" data-region="south" title="وادي بن حماد والكرك">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🌿</span>
               <span class="map-pin-label">الكرك</span>
             </button>
 
-            <button type="button" class="map-pin-btn" style="top: 68%; right: 66%;" data-pin-id="petra" data-region="south" title="البترا والسيق البارد">
+            <button type="button" class="map-pin-btn" style="top: 66%; right: 68%;" data-pin-id="petra" data-region="south" title="البترا والسيق البارد">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🏺</span>
               <span class="map-pin-label">البترا</span>
             </button>
 
-            <button type="button" class="map-pin-btn" style="top: 79%; right: 58%;" data-pin-id="rum" data-region="south" title="وادي رم">
+            <button type="button" class="map-pin-btn" style="top: 74%; right: 48%;" data-pin-id="rum" data-region="south" title="وادي رم">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">⛺</span>
               <span class="map-pin-label">وادي رم</span>
             </button>
 
-            <button type="button" class="map-pin-btn" style="top: 89%; right: 64%;" data-pin-id="aqaba" data-region="south" title="خليج العقبة">
+            <button type="button" class="map-pin-btn" style="top: 86%; right: 78%;" data-pin-id="aqaba" data-region="south" title="خليج العقبة">
               <span class="map-pin-pulse"></span>
               <span class="map-pin-icon">🤿</span>
               <span class="map-pin-label">العقبة</span>

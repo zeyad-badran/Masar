@@ -105,7 +105,6 @@ const MasarDB = {
       const res = await signInWithPopup(auth, provider);
       return { success: true, user: res.user };
     } catch (error) {
-      console.error('Google Sign In Error:', error);
       return { success: false, error: error.message };
     }
   },

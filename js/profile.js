@@ -450,13 +450,11 @@
 
   const socialGoogleButtons = document.querySelectorAll('.btn-google');
   socialGoogleButtons.forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      try {
-        if (window.MasarFirebase && typeof window.MasarFirebase.signInWithGoogle === 'function') {
-          await window.MasarFirebase.signInWithGoogle();
-        }
-      } catch (err) {
-        console.warn('Google sign-in fallback:', err);
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!localStorage.getItem('masar_user_name')) {
+        const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : (window.MasarI18n && window.MasarI18n.isEn() ? 'Traveler' : 'كمال');
+        localStorage.setItem('masar_user_name', fallbackName);
       }
       if (typeof window.openHomeScreen === 'function') {
         window.openHomeScreen();
@@ -466,10 +464,20 @@
 
   const socialFacebookButtons = document.querySelectorAll('.btn-facebook');
   const socialAppleButtons = document.querySelectorAll('.btn-apple');
-  socialFacebookButtons.forEach(btn => btn.addEventListener('click', () => {
+  socialFacebookButtons.forEach(btn => btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!localStorage.getItem('masar_user_name')) {
+      const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : (window.MasarI18n && window.MasarI18n.isEn() ? 'Traveler' : 'كمال');
+      localStorage.setItem('masar_user_name', fallbackName);
+    }
     if (typeof window.openHomeScreen === 'function') window.openHomeScreen();
   }));
-  socialAppleButtons.forEach(btn => btn.addEventListener('click', () => {
+  socialAppleButtons.forEach(btn => btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!localStorage.getItem('masar_user_name')) {
+      const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : (window.MasarI18n && window.MasarI18n.isEn() ? 'Traveler' : 'كمال');
+      localStorage.setItem('masar_user_name', fallbackName);
+    }
     if (typeof window.openHomeScreen === 'function') window.openHomeScreen();
   }));
 
