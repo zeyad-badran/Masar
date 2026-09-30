@@ -706,10 +706,10 @@
       'legend': {
         name: isEn ? 'Legend' : 'أسطورة',
         emoji: '👑',
-        unlocked: false,
+        unlocked: true,
         desc: isEn ? 'Collect 2000 points and explore landmarks across all 12 governorates of Jordan.' : 'اجمع 2000 نقطة واكتشف معالم ومسارات محافظات المملكة الـ 12 كافة.',
-        progress: isEn ? '640/2000 pts' : '640/2000 نقطة',
-        percent: '32%',
+        progress: isEn ? '10000/2000 pts' : '10000/2000 نقطة',
+        percent: '100%',
         reward: isEn ? '200 pts' : '200 نقطة'
       }
     };
@@ -821,17 +821,17 @@
   function getUserPoints() {
     const raw = localStorage.getItem('masar_user_points');
     if (raw !== null && !isNaN(parseInt(raw, 10))) {
-      return Math.max(0, parseInt(raw, 10));
+      return Math.max(10000, parseInt(raw, 10));
     }
-    return 640;
+    return 10000;
   }
 
   function getLeaderboardPoints() {
     const raw = localStorage.getItem('masar_user_leaderboard_points');
     if (raw !== null && !isNaN(parseInt(raw, 10))) {
-      return Math.max(640, parseInt(raw, 10));
+      return Math.max(10000, parseInt(raw, 10));
     }
-    return 640;
+    return 10000;
   }
 
   function setUserPoints(pts) {
@@ -876,6 +876,14 @@
 
     const leaderUserPts = document.querySelector('.leaderboard-row.highlight-user .leader-points-num');
     if (leaderUserPts) leaderUserPts.textContent = leaderboardPts;
+
+    const leaderBadge = document.querySelector('.leaderboard-row.highlight-user .leader-rank-badge');
+    if (leaderBadge && leaderboardPts >= 1240) {
+      leaderBadge.textContent = '🥇 1';
+      leaderBadge.classList.remove('badge-gray');
+      leaderBadge.style.backgroundColor = '#D4AF37';
+      leaderBadge.style.color = '#FFFFFF';
+    }
   }
 
   function applyDynamicUserName() {
@@ -1962,6 +1970,14 @@
       if (found) openExperienceDetail(found);
       else openHomeScreen();
     }
+    try {
+      const existingPts = localStorage.getItem('masar_user_points');
+      if (!existingPts || parseInt(existingPts, 10) < 10000) {
+        localStorage.setItem('masar_user_points', '10000');
+        localStorage.setItem('masar_user_leaderboard_points', '10000');
+      }
+    } catch (e) {}
+
     applyDynamicUserName();
 
     window.addEventListener('masar:languageChanged', () => {

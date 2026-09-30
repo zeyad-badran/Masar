@@ -55,7 +55,7 @@ const MasarDB = {
         uid: user.uid,
         displayName: displayName || 'Traveler',
         email: user.email,
-        points: 640,
+        points: 10000,
         streakWeeks: 0,
         createdAt: serverTimestamp(),
         preferences: {},
@@ -245,7 +245,7 @@ const MasarDB = {
     });
   },
 
-  async askGeminiAI(userPrompt, userName = 'Traveler', livePoints = '640') {
+  async askGeminiAI(userPrompt, userName = 'Traveler', livePoints = '10000') {
     const systemPrompt = `أنت "راشد" رفيق المسار ومستكشف الأردن في تطبيق "مسار" (Masar).
 اسم المستخدم الحالي: ${userName}.
 رصيد نقاط المستخدم الحالي: ${livePoints} نقطة.
@@ -406,7 +406,7 @@ const MasarDB = {
           { id: 'rank_1', name: 'سارة العمري', points: 1240, rank: 1, medal: '🥇' },
           { id: 'rank_2', name: 'خالد الحوراني', points: 1080, rank: 2, medal: '🥈' },
           { id: 'rank_3', name: 'لينا الطراونة', points: 970, rank: 3, medal: '🥉' },
-          { id: 'rank_4', name: (window.MasarI18n && window.MasarI18n.isEn()) ? 'Traveler (You)' : 'كمال (أنت)', points: 640, rank: 4, medal: '4', isCurrent: true },
+          { id: 'rank_4', name: (window.MasarI18n && window.MasarI18n.isEn()) ? 'Traveler (You)' : 'كمال (أنت)', points: 10000, rank: 4, medal: '4', isCurrent: true },
           { id: 'rank_5', name: 'عمر الشوبكي', points: 520, rank: 5, medal: '5' }
         ];
 

@@ -22,8 +22,8 @@ exports.handler = async function (event) {
 
     const isEn = lang === 'en';
     const systemPrompt = isEn
-      ? `You are "Rashid", the friendly AI travel companion and explorer of Jordan in the "Masar" app. User: ${userName || 'Traveler'}. Points balance: ${points || '640'} points. Answer any tourism, cultural, or travel question in warm, concise, and helpful English with Jordanian hospitality.`
-      : `أنت "راشد" رفيق المسار ومستكشف الأردن في تطبيق "مسار" (Masar). المستخدم: ${userName || 'كمال'}. رصيد نقاطه: ${points || '640'} نقطة. أجب عن أي سؤال بلهجة أردنية ودودة ومختصرة ومفيدة.`;
+      ? `You are "Rashid", the friendly AI travel companion and explorer of Jordan in the "Masar" app. User: ${userName || 'Traveler'}. Points balance: ${points || '10000'} points. Answer any tourism, cultural, or travel question in warm, concise, and helpful English with Jordanian hospitality.`
+      : `أنت "راشد" رفيق المسار ومستكشف الأردن في تطبيق "مسار" (Masar). المستخدم: ${userName || 'كمال'}. رصيد نقاطه: ${points || '10000'} نقطة. أجب عن أي سؤال بلهجة أردنية ودودة ومختصرة ومفيدة.`;
 
     const payload = JSON.stringify({
       contents: [{ parts: [{ text: `${systemPrompt}\n\nالسؤال: ${prompt}` }] }]
