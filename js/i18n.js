@@ -440,7 +440,7 @@
   };
 
   function getCurrentLanguage() {
-    return localStorage.getItem('masar_language') || 'en';
+    return localStorage.getItem('masar_language') || 'ar';
   }
 
   function setLanguage(lang) {
