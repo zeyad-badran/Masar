@@ -579,6 +579,12 @@
           const errMsg = (res && res.error) ? res.error : '';
           if (errMsg.includes('popup-closed-by-user') || errMsg.includes('cancelled')) {
             if (window.showMasarToast) window.showMasarToast('تم إغلاق نافذة تسجيل الدخول عبر Google', 'ℹ️');
+          } else if (errMsg.includes('unauthorized-domain')) {
+            console.error('Firebase Auth Error: Domain not authorized.', window.location.hostname);
+            console.info('Add this domain in Firebase Console: https://console.firebase.google.com/project/masar-12856/authentication/settings -> Authorized domains');
+            if (window.showMasarToast) {
+              window.showMasarToast(`يرجى إضافة ${window.location.hostname} في لوحة Firebase (Authorized Domains)`, '🔒');
+            }
           } else {
             console.warn('Google sign-in did not complete:', errMsg);
             if (window.showMasarToast) window.showMasarToast('تعذر تسجيل الدخول عبر Google. يرجى المحاولة لاحقاً.', '⚠️');
