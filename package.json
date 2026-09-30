@@ -1,0 +1,21 @@
+{
+  "name": "masar",
+  "version": "1.0.0",
+  "description": "Masar (مسار) - Interactive Jordan Travel Companion & Gamified Tourism Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node scripts/seed-firestore.js"
+  },
+  "keywords": [
+    "jordan",
+    "travel",
+    "tourism",
+    "masar",
+    "bilingual",
+    "pwa",
+    "gamification"
+  ],
+  "author": "Zeyad Badran",
+  "license": "MIT"
+}

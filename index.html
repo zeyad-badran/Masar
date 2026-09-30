@@ -1,0 +1,2721 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FDFBF8">
+  <meta name="description" content="مسار - رفيقك السياحي التفاعلي لاستكشاف الأردن وتجاربه الأصيلة">
+  <title>مسار | Masar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="assets/images/emblem.png">
+  <link rel="preload" as="image" href="assets/images/char_screen1.png">
+
+  <link rel="stylesheet" href="css/style.css?v=17">
+</head>
+<body>
+  <div class="app-viewport">
+
+    <section class="splash-container state-1" id="splashContainer" aria-label="شاشة البدء">
+      <div class="brand-group" id="brandGroup">
+        <div class="emblem-wrapper" id="emblemWrapper">
+          <img src="assets/images/emblem.png" alt="" class="emblem-img" id="emblemImg" width="144" height="144">
+        </div>
+        <h1 class="brand-title" id="brandTitle" lang="ar" dir="rtl">مسار</h1>
+      </div>
+    </section>
+
+    <main class="onboarding-container" id="onboardingContainer" aria-label="جولة التعريف" hidden>
+      <div class="onboarding-card">
+
+        <header class="onboarding-header">
+          <div class="onboarding-header-brand" aria-label="مسار">
+            <img src="assets/images/emblem.png" alt="" class="header-brand-icon" width="28" height="28">
+            <span class="header-brand-title">مسار</span>
+          </div>
+        </header>
+
+        <div class="onboarding-slider" id="onboardingSlider">
+
+          <article class="onboarding-slide active" id="slide-1" data-step="1" aria-hidden="false">
+            <div class="character-illustration-wrapper">
+              <img src="assets/images/char_screen1.png" alt="شخصية مسار مع خريطة وفانوس" class="character-img" width="240" height="220">
+            </div>
+            <h2 class="slide-title">اكتشف الأردن</h2>
+            <div class="slide-description-box">
+              <p class="slide-description">أماكن مخفية، قصص ما سمعت عنها،<br>وتجارب بعيدة عن الطرق المعتادة.</p>
+            </div>
+          </article>
+
+          <article class="onboarding-slide" id="slide-2" data-step="2" aria-hidden="true">
+            <div class="character-illustration-wrapper">
+              <img src="assets/images/char_screen2.png" alt="شخصية مسار يحمل فانوساً وعصا" class="character-img" width="240" height="220">
+            </div>
+            <h2 class="slide-title">أماكن مخفية</h2>
+            <div class="slide-description-box">
+              <p class="slide-description">تعرّف على أهل الأردن، جرّب ثقافتهم،<br>وعيش لحظات حقيقية من قلب المكان.</p>
+            </div>
+          </article>
+
+          <article class="onboarding-slide" id="slide-3" data-step="3" aria-hidden="true">
+            <div class="character-illustration-wrapper">
+              <img src="assets/images/char_screen3.png" alt="شخصية المغامر مع حقيبة وخريطة كاميرا" class="character-img" width="240" height="220">
+            </div>
+            <h2 class="slide-title">مسارك بانتظارك !</h2>
+            <div class="slide-description-box">
+              <p class="slide-description">اكتشف، عيش<br>اجمع ذكرياتك.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <footer class="onboarding-footer">
+
+          <div class="onboarding-dots" role="tablist" aria-label="مؤشر التقدم">
+            <button type="button" class="dot-btn active" data-step="1" role="tab" aria-selected="true" aria-label="الشاشة 1 من 3: اكتشف الأردن"></button>
+            <button type="button" class="dot-btn" data-step="2" role="tab" aria-selected="false" aria-label="الشاشة 2 من 3: أماكن مخفية"></button>
+            <button type="button" class="dot-btn" data-step="3" role="tab" aria-selected="false" aria-label="الشاشة 3 من 3: مسارك بانتظارك"></button>
+          </div>
+
+          <div class="onboarding-action">
+            <button type="button" class="btn-primary" id="btnNext" aria-label="ابدأ">
+              <span class="btn-label" id="btnLabel">ابدأ</span>
+            </button>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+
+    <main class="profile-container" id="profileContainer" aria-label="إعداد الملف الشخصي" hidden>
+      <div class="profile-card">
+
+        <div class="profile-slider" id="profileSlider">
+
+          <article class="profile-slide active" id="profile-slide-1" data-step="1" aria-hidden="false">
+            <div class="profile-top-bar">
+              <button type="button" class="btn-skip" id="btnSkip" aria-label="تخطي الخطوة">تخطي</button>
+            </div>
+
+            <div class="profile-content-upper">
+              <h2 class="profile-question">حيّاك! أنا <span class="text-burgundy">راشد</span> رفيقك بمسارك. شو بتحب أناديك؟</h2>
+
+              <div class="profile-input-wrapper">
+                <input type="text" id="inputNickname" class="profile-input-field" placeholder="اسمك الأول أو كنيتك" autocomplete="off" aria-label="اسمك الأول أو كنيتك">
+              </div>
+            </div>
+            <div class="validation-msg" id="valMsg1" role="alert" aria-live="polite"></div>
+          </article>
+
+          <article class="profile-slide" id="profile-slide-2" data-step="2" aria-hidden="true">
+            <div class="profile-top-bar">
+              <button type="button" class="btn-skip" aria-label="تخطي الخطوة">تخطي</button>
+            </div>
+
+            <div class="age-content">
+              <h2 class="profile-question">عاشت الأسامي! عشان أعطيك مسارك<br>المناسب، بحتاج أعرف فئتك العمرية؟</h2>
+              <p class="profile-subtitle">اختر فئتك العمرية</p>
+
+              <fieldset class="age-options">
+                <legend class="sr-only">الفئة العمرية</legend>
+                <div class="age-row age-row-1">
+                  <label class="pill-option">
+                    <input type="radio" name="ageRange" value="18 - 24">
+                    <span class="pill-btn">18 - 24</span>
+                  </label>
+                  <label class="pill-option">
+                    <input type="radio" name="ageRange" value="أقل من 18">
+                    <span class="pill-btn">أقل من 18</span>
+                  </label>
+                </div>
+                <div class="age-row age-row-2">
+                  <label class="pill-option">
+                    <input type="radio" name="ageRange" value="36+">
+                    <span class="pill-btn">+36</span>
+                  </label>
+                  <label class="pill-option">
+                    <input type="radio" name="ageRange" value="25 - 35">
+                    <span class="pill-btn">25 - 35</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="validation-msg" id="valMsg2" role="alert" aria-live="polite"></div>
+          </article>
+
+          <article class="profile-slide" id="profile-slide-3" data-step="3" aria-hidden="true">
+            <div class="profile-top-bar">
+              <button type="button" class="btn-skip" aria-label="تخطي الخطوة">تخطي</button>
+            </div>
+
+            <div class="profile-content-upper">
+              <h2 class="profile-question">شو بتحب تكتشف بالاردن؟</h2>
+
+              <fieldset class="options-list">
+                <legend class="sr-only">اهتمامات الاستكشاف</legend>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="interests" value="القصص والتاريخ">
+                  <span class="checkbox-box"></span>
+                  <span class="option-label-text">القصص والتاريخ</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="interests" value="الطبيعة">
+                  <span class="checkbox-box"></span>
+                  <span class="option-label-text">الطبيعة</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="interests" value="الأكل">
+                  <span class="checkbox-box"></span>
+                  <span class="option-label-text">الأكل</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="interests" value="المغامرات">
+                  <span class="checkbox-box"></span>
+                  <span class="option-label-text">المغامرات</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="interests" value="الفن والحرف اليدوية">
+                  <span class="checkbox-box"></span>
+                  <span class="option-label-text">الفن والحرف اليدوية</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="interests" value="تجربة العيش مثل اهل المكان">
+                  <span class="checkbox-box"></span>
+                  <span class="option-label-text">تجربة العيش مثل اهل المكان</span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="validation-msg" id="valMsg3" role="alert" aria-live="polite"></div>
+          </article>
+
+          <article class="profile-slide" id="profile-slide-4" data-step="4" aria-hidden="true">
+            <div class="profile-top-bar">
+              <button type="button" class="btn-skip" aria-label="تخطي الخطوة">تخطي</button>
+            </div>
+
+            <div class="profile-content-upper">
+
+              <div class="profile-section">
+                <h2 class="section-title">هل لديك ميزانية محددة؟</h2>
+                <div class="options-radio-list">
+                  <label class="radio-option">
+                    <input type="radio" name="budgetStyle" value="مسار اقتصادي">
+                    <span class="radio-circle"></span>
+                    <span class="option-label-text">مسار اقتصادي</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="budgetStyle" value="مسار متوازن">
+                    <span class="radio-circle"></span>
+                    <span class="option-label-text">مسار متوازن</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="budgetStyle" value="لا يهمني">
+                    <span class="radio-circle"></span>
+                    <span class="option-label-text">لا يهمني</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="profile-section" style="margin-top: 36px;">
+                <h2 class="section-title">مين رفيقك بالمسار؟</h2>
+                <div class="options-radio-list">
+                  <label class="radio-option">
+                    <input type="radio" name="companion" value="العائلة">
+                    <span class="radio-circle"></span>
+                    <span class="option-label-text">العائلة</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="companion" value="الأصدقاء">
+                    <span class="radio-circle"></span>
+                    <span class="option-label-text">الأصدقاء</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="companion" value="لا أحد">
+                    <span class="radio-circle"></span>
+                    <span class="option-label-text">لا أحد</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="validation-msg" id="valMsg4" role="alert" aria-live="polite"></div>
+          </article>
+
+        </div>
+
+        <footer class="profile-footer">
+
+          <div class="footer-step-default" id="footerDefault">
+            <button
+              type="button"
+              class="btn-profile-next"
+              id="btnProfileNext"
+              aria-label="التالي"
+            >
+              <svg
+                class="btn-arrow-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+              <span class="btn-text">التالي</span>
+            </button>
+            <button
+              type="button"
+              class="btn-profile-prev"
+              id="btnProfilePrev"
+              aria-label="السابق"
+            >
+              السابق
+            </button>
+          </div>
+
+          <div class="footer-step-4" id="footerStep4" hidden>
+            <button
+              type="button"
+              class="btn-step4-login"
+              id="btnStep4Login"
+              aria-label="تسجيل الدخول"
+            >
+              <svg
+                class="btn-arrow-icon"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+              <span class="btn-text">تسجيل الدخول</span>
+            </button>
+            <button
+              type="button"
+              class="btn-step4-start"
+              id="btnStep4Start"
+              aria-label="ابدأ الآن"
+            >
+              ابدأ الآن
+            </button>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+
+    <main class="login-container" id="loginContainer" aria-label="تسجيل الدخول" hidden>
+      <div class="login-card">
+
+        <div class="login-emblem-wrapper">
+          <img src="assets/images/emblem.png" alt="شعار مسار" class="login-emblem-img" width="290" height="290">
+        </div>
+
+        <div class="login-content">
+          <h1 class="login-title">تسجيل الدخول</h1>
+
+          <form class="login-form" id="loginForm" autocomplete="on">
+
+            <div class="login-input-group">
+              <input
+                type="email"
+                id="inputEmail"
+                class="login-input-field"
+                placeholder="البريد الالكتروني"
+                autocomplete="email"
+                aria-label="البريد الالكتروني"
+              >
+              <svg class="login-input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9E9A93" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+
+            <div class="login-input-group">
+              <input
+                type="password"
+                id="inputPassword"
+                class="login-input-field"
+                placeholder="كلمة السر"
+                autocomplete="current-password"
+                aria-label="كلمة السر"
+              >
+              <svg class="login-input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9E9A93" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2.5" y="6" width="19" height="12" rx="3.5"/>
+                <circle cx="8" cy="12" r="1.2" fill="#9E9A93"/>
+                <circle cx="12" cy="12" r="1.2" fill="#9E9A93"/>
+                <circle cx="16" cy="12" r="1.2" fill="#9E9A93"/>
+              </svg>
+            </div>
+
+            <div class="login-terms-wrapper">
+              <label class="login-terms-label">
+                <input type="checkbox" id="checkTerms" class="login-terms-checkbox">
+                <span class="terms-custom-box"></span>
+                <span class="terms-text">
+                  انا اوافق على <span class="terms-link">التعليمات والشروط</span>
+                </span>
+              </label>
+            </div>
+            <div class="login-val-msg" id="valMsgTerms"></div>
+
+            <button type="submit" class="btn-login-submit" id="btnLoginSubmit">
+              تسجيل الدخول
+            </button>
+
+            <div class="login-switch-wrap">
+              <span class="login-switch-text">ليس لديك حساب؟</span>
+              <button type="button" class="btn-switch-auth" id="btnGoToRegister">إنشاء حساب جديد</button>
+            </div>
+            <div class="login-guest-wrap">
+              <button type="button" class="btn-guest-login" id="btnGuestLogin">أو الاستمرار كزائر</button>
+            </div>
+          </form>
+
+          <div class="login-divider">
+            <span class="divider-line"></span>
+            <span class="divider-text">Or continue with</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <div class="login-social-group">
+
+            <button type="button" class="btn-social btn-facebook" aria-label="تسجيل الدخول باستخدام فيسبوك">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </button>
+
+            <button type="button" class="btn-social btn-google" aria-label="تسجيل الدخول باستخدام جوجل">
+              <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.36 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+            </button>
+
+            <button type="button" class="btn-social btn-apple" aria-label="تسجيل الدخول باستخدام آبل">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000" aria-hidden="true">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.13-1.96 1-3.1-.98.04-2.16.65-2.86 1.47-.61.71-1.15 1.87-1.01 2.98 1.1.08 2.2-.53 2.87-1.35z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <main class="login-container" id="registerContainer" aria-label="إنشاء حساب جديد" hidden>
+      <div class="login-card">
+
+        <div class="login-emblem-wrapper">
+          <img src="assets/images/emblem.png" alt="شعار مسار" class="login-emblem-img" width="290" height="290">
+        </div>
+
+        <div class="login-content">
+          <h1 class="login-title">إنشاء حساب جديد</h1>
+          <p class="register-subtitle">انضم إلى مجتمع مسار واستكشف أجمل تجارب الأردن</p>
+
+          <form class="login-form" id="registerForm" autocomplete="on">
+
+            <div class="login-input-group">
+              <input
+                type="text"
+                id="inputRegName"
+                class="login-input-field"
+                placeholder="الاسم الكامل"
+                autocomplete="name"
+                aria-label="الاسم الكامل"
+                required
+              >
+              <svg class="login-input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9E9A93" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+
+            <div class="login-input-group">
+              <input
+                type="email"
+                id="inputRegEmail"
+                class="login-input-field"
+                placeholder="البريد الالكتروني"
+                autocomplete="email"
+                aria-label="البريد الالكتروني"
+                required
+              >
+              <svg class="login-input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9E9A93" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+
+            <div class="login-input-group">
+              <input
+                type="password"
+                id="inputRegPassword"
+                class="login-input-field"
+                placeholder="كلمة السر"
+                autocomplete="new-password"
+                aria-label="كلمة السر"
+                required
+              >
+              <svg class="login-input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9E9A93" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2.5" y="6" width="19" height="12" rx="3.5"/>
+                <circle cx="8" cy="12" r="1.2" fill="#9E9A93"/>
+                <circle cx="12" cy="12" r="1.2" fill="#9E9A93"/>
+                <circle cx="16" cy="12" r="1.2" fill="#9E9A93"/>
+              </svg>
+            </div>
+
+            <div class="login-terms-wrapper">
+              <label class="login-terms-label">
+                <input type="checkbox" id="checkRegTerms" class="login-terms-checkbox">
+                <span class="terms-custom-box"></span>
+                <span class="terms-text">
+                  انا اوافق على <span class="terms-link">التعليمات والشروط</span>
+                </span>
+              </label>
+            </div>
+            <div class="login-val-msg" id="valMsgRegTerms"></div>
+
+            <button type="submit" class="btn-login-submit" id="btnRegisterSubmit">
+              إنشاء الحساب
+            </button>
+
+            <div class="login-switch-wrap">
+              <span class="login-switch-text">لديك حساب بالفعل؟</span>
+              <button type="button" class="btn-switch-auth" id="btnGoToLogin">تسجيل الدخول</button>
+            </div>
+          </form>
+
+          <div class="login-divider">
+            <span class="divider-line"></span>
+            <span class="divider-text">Or continue with</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <div class="login-social-group">
+            <button type="button" class="btn-social btn-facebook" aria-label="تسجيل الدخول باستخدام فيسبوك">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </button>
+            <button type="button" class="btn-social btn-google" aria-label="تسجيل الدخول باستخدام جوجل">
+              <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.36 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+            </button>
+            <button type="button" class="btn-social btn-apple" aria-label="تسجيل الدخول باستخدام آبل">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000" aria-hidden="true">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.13-1.96 1-3.1-.98.04-2.16.65-2.86 1.47-.61.71-1.15 1.87-1.01 2.98 1.1.08 2.2-.53 2.87-1.35z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <main class="home-container" id="homeContainer" aria-label="الصفحة الرئيسية" hidden>
+      <div class="home-scroll-area">
+
+        <header class="home-header">
+          <h1 class="home-greeting-title" id="homeGreetingTitle">مرحبا كمال</h1>
+          <p class="home-greeting-sub">مسارك صار جاهز، بتحب نكمل ولا نغيره؟</p>
+        </header>
+
+        <section class="home-points-card" aria-label="رصيد النقاط والتحديات">
+          <div class="points-card-right">
+            <div class="points-value-row">
+              <span class="points-amount">640</span>
+              <span class="points-label">نقطة</span>
+            </div>
+            <div class="streak-row">
+              <span class="streak-flame-wrap" aria-hidden="true">
+                <svg class="streak-flame-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                </svg>
+              </span>
+              <span class="streak-count">3</span>
+              <span class="streak-text">اسابيع متتالية</span>
+            </div>
+          </div>
+          <div class="points-card-left">
+            <img src="assets/images/mascot_pin.png" alt="تميمة مسار" class="mascot-pin-img">
+          </div>
+        </section>
+
+        <section class="home-quick-actions" aria-label="الخدمات الذكية">
+          <button type="button" class="quick-action-card" id="btnOpenJordanMap">
+            <div class="quick-action-icon pink-bg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                <line x1="8" y1="2" x2="8" y2="18"></line>
+                <line x1="16" y1="6" x2="16" y2="22"></line>
+              </svg>
+            </div>
+            <div class="quick-action-content">
+              <h3 class="quick-action-title">خريطة الأردن</h3>
+              <p class="quick-action-sub">استكشف المسارات جغرافياً</p>
+            </div>
+            <span class="quick-action-arrow">←</span>
+          </button>
+
+          <button type="button" class="quick-action-card" id="btnOpenTripPlanner">
+            <div class="quick-action-icon amber-bg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <line x1="8" y1="14" x2="8.01" y2="14" stroke-width="3"></line>
+                <line x1="12" y1="14" x2="12.01" y2="14" stroke-width="3"></line>
+                <line x1="16" y1="14" x2="16.01" y2="14" stroke-width="3"></line>
+                <line x1="8" y1="18" x2="8.01" y2="18" stroke-width="3"></line>
+                <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"></line>
+                <line x1="16" y1="18" x2="16.01" y2="18" stroke-width="3"></line>
+              </svg>
+            </div>
+            <div class="quick-action-content">
+              <h3 class="quick-action-title">مخطط الرحلات</h3>
+              <p class="quick-action-sub">جدول مسار مخصص لرحلتك</p>
+            </div>
+            <span class="quick-action-arrow">←</span>
+          </button>
+
+          <button type="button" class="quick-action-card" id="btnOpenCommunityFeed">
+            <div class="quick-action-icon blue-bg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </div>
+            <div class="quick-action-content">
+              <h3 class="quick-action-title">مجتمع مسار</h3>
+              <p class="quick-action-sub">تحديات ولحظات المستكشفين</p>
+            </div>
+            <span class="quick-action-arrow">←</span>
+          </button>
+        </section>
+
+        <section class="challenges-section" aria-label="تحديات الأسبوع">
+          <div class="challenges-header">
+            <h2 class="challenges-title">تحديات الأسبوع</h2>
+            <button type="button" class="challenges-see-all">عرض الكل</button>
+          </div>
+
+          <div class="challenges-list">
+
+            <article class="challenge-card">
+              <div class="challenge-main">
+                <img src="assets/images/um_mohammed.jpg" alt="خبز الشراك مع أم محمد" class="challenge-img">
+                <div class="challenge-info">
+                  <h3 class="challenge-name">خبز الشراك مع أم محمد</h3>
+                  <div class="challenge-meta">
+                    <span class="challenge-location">السلط</span>
+                    <span class="meta-dot">•</span>
+                    <span class="challenge-rating">4.9</span>
+                    <span class="challenge-star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="challenge-points-badge">
+                25 نقطة
+              </div>
+            </article>
+
+            <article class="challenge-card">
+              <div class="challenge-main">
+                <img src="assets/images/wadi_hidan.png" alt="مسير وادي الهيدان" class="challenge-img">
+                <div class="challenge-info">
+                  <h3 class="challenge-name">مسير وادي الهيدان</h3>
+                  <div class="challenge-meta">
+                    <span class="challenge-location">مادبا</span>
+                    <span class="meta-dot">•</span>
+                    <span class="challenge-rating">4.8</span>
+                    <span class="challenge-star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="challenge-points-badge">
+                25 نقطة
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="suggestions-section" aria-label="اقتراحات لك">
+          <div class="suggestions-header">
+            <div class="suggestions-title-group">
+              <h2 class="suggestions-title">اقتراحات لك</h2>
+              <p class="suggestions-sub">تجارب تناسب ذوقك</p>
+            </div>
+            <button type="button" class="challenges-see-all">عرض الكل</button>
+          </div>
+
+          <div class="suggestions-list">
+
+            <article class="suggestion-card">
+              <div class="suggestion-img-wrap">
+                <img src="assets/images/citadel_sunset.jpg" alt="غروب من جبل القلعة" class="suggestion-img">
+              </div>
+              <div class="suggestion-content">
+                <h3 class="suggestion-name">غروب من جبل القلعة</h3>
+                <p class="suggestion-desc">استمتع بإطلالة هادئة على عمّان وقت الغروب.</p>
+                <div class="suggestion-meta">
+                  <span class="suggestion-tag">طبيعة • تصوير</span>
+                  <svg class="suggestion-cat-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#85122D" stroke-width="2.2" aria-hidden="true">
+                    <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="1.5" y="9.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" />
+                  </svg>
+                  <span class="meta-separator"></span>
+                  <div class="suggestion-loc-group">
+                    <svg class="suggestion-loc-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555843" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3.5" stroke-width="2.3"></circle>
+                    </svg>
+                    <span class="suggestion-loc-text">عمّان</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="suggestion-card">
+              <div class="suggestion-img-wrap">
+                <img src="assets/images/salt_alleys.jpg" alt="اكتشف حكايات السلط" class="suggestion-img">
+              </div>
+              <div class="suggestion-content">
+                <h3 class="suggestion-name">اكتشف حكايات السلط</h3>
+                <p class="suggestion-desc">جولة قصيرة بين البيوت القديمة والأزقة التاريخية.</p>
+                <div class="suggestion-meta">
+                  <span class="suggestion-tag">تاريخ • ثقافة</span>
+                  <svg class="suggestion-cat-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#85122D" stroke-width="2.2" aria-hidden="true">
+                    <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="1.5" y="9.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" />
+                  </svg>
+                  <span class="meta-separator"></span>
+                  <div class="suggestion-loc-group">
+                    <svg class="suggestion-loc-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555843" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3.5" stroke-width="2.3"></circle>
+                    </svg>
+                    <span class="suggestion-loc-text">السلط</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="suggestion-card">
+              <div class="suggestion-img-wrap">
+                <img src="assets/images/arabic_coffee.jpg" alt="قهوة على طريقة أهل الأردن" class="suggestion-img">
+              </div>
+              <div class="suggestion-content">
+                <h3 class="suggestion-name">قهوة على طريقة أهل الأردن</h3>
+                <p class="suggestion-desc">تعرّف على العادات المحلية واستمتع بجلسة قهوة أصيلة.</p>
+                <div class="suggestion-meta">
+                  <span class="suggestion-tag">طعام • تجربة محلية</span>
+                  <svg class="suggestion-cat-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#85122D" stroke-width="2.2" aria-hidden="true">
+                    <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="1.5" y="9.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" />
+                  </svg>
+                  <span class="meta-separator"></span>
+                  <div class="suggestion-loc-group">
+                    <svg class="suggestion-loc-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555843" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3.5" stroke-width="2.3"></circle>
+                    </svg>
+                    <span class="suggestion-loc-text">عمّان</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="experiences-section" aria-label="تجارب مميزة">
+          <div class="experiences-carousel-track">
+
+            <article class="experience-card">
+              <div class="experience-banner-wrap">
+                <img src="assets/images/wadi_mujib.png?v=2" alt="مغامرة في وادي الموجب" class="experience-banner-img">
+              </div>
+              <div class="experience-card-body">
+                <h3 class="experience-title">مغامرة في وادي الموجب</h3>
+                <p class="experience-desc">استكشف الوديان والمياه والمناظر الطبيعية في واحدة من أجمل مغامرات الأردن.</p>
+                <div class="experience-meta">
+                  <span class="exp-tag">طبيعة • مغامرة 🌿</span>
+                  <span class="exp-loc-text">وادي الموجب</span>
+                  <svg class="exp-loc-pin" width="12" height="12" viewBox="0 0 24 24" fill="#85122D" stroke="none" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <button type="button" class="btn-discover-exp">
+                  <span>اكتشف التجربة</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </article>
+
+            <article class="experience-card">
+              <div class="experience-banner-wrap">
+                <img src="assets/images/salt_cooking.jpg" alt="تعلّم الطبخ الأردني مع أهل السلط" class="experience-banner-img">
+              </div>
+              <div class="experience-card-body">
+                <h3 class="experience-title">تعلّم الطبخ الأردني مع أهل السلط</h3>
+                <p class="experience-desc">تعلّم وصفة أردنية تقليدية وشارك أهل المكان وجبة من قلب البيت.</p>
+                <div class="experience-meta">
+                  <span class="exp-tag">طعام • تجربة محلية 🍽️</span>
+                  <span class="exp-loc-text">السلط</span>
+                  <svg class="exp-loc-pin" width="12" height="12" viewBox="0 0 24 24" fill="#85122D" stroke="none" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <button type="button" class="btn-discover-exp">
+                  <span>اكتشف التجربة</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </article>
+
+            <article class="experience-card">
+              <div class="experience-banner-wrap">
+                <img src="assets/images/rum_stargazing.jpg" alt="ليلة تحت نجوم وادي رم" class="experience-banner-img">
+              </div>
+              <div class="experience-card-body">
+                <h3 class="experience-title">ليلة تحت نجوم وادي رم</h3>
+                <p class="experience-desc">عش ليلة بين الصحراء والنجوم، وتعرّف على قصص أهل البادية.</p>
+                <div class="experience-meta">
+                  <span class="exp-tag">ثقافة • مغامرة ⛺</span>
+                  <span class="exp-loc-text">وادي رم</span>
+                  <svg class="exp-loc-pin" width="12" height="12" viewBox="0 0 24 24" fill="#85122D" stroke="none" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <button type="button" class="btn-discover-exp">
+                  <span>اكتشف التجربة</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <div class="home-bottom-spacer" aria-hidden="true"></div>
+
+      </div>
+
+      <nav class="home-bottom-nav" aria-label="شريط التنقل السفلي">
+
+        <button type="button" class="nav-item active" id="navItemHome" aria-label="الرئيسية" aria-current="page">
+          <div class="nav-icon-pill">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 10.5L12 3l9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10.5z"/>
+              <path d="M9 22v-6a3 3 0 0 1 6 0v6"/>
+            </svg>
+          </div>
+        </button>
+
+        <button type="button" class="nav-item" id="navItemRewards" aria-label="الجوائز والإنجازات">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8.5" r="5.5"/>
+            <polygon points="12 5.5 13 7.8 15.5 8 13.6 9.7 14.2 12.2 12 10.9 9.8 12.2 10.4 9.7 8.5 8 11 7.8 12 5.5" fill="#2C2C2C" stroke="none"/>
+            <path d="M8.2 13.5L6.5 22L12 19.2L17.5 22L15.8 13.5"/>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-item" id="navItemMap" aria-label="دليل مسار">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 8V4H8"/>
+            <rect width="16" height="12" x="4" y="8" rx="3"/>
+            <path d="M2 14h2"/>
+            <path d="M20 14h2"/>
+            <path d="M9 13v1"/>
+            <path d="M15 13v1"/>
+            <path d="M9 17h6"/>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-item" id="navItemProfile" aria-label="الملف الشخصي">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+      </nav>
+    </main>
+
+    <main class="rewards-container" id="rewardsContainer" aria-label="الجوائز والإنجازات" hidden>
+      <div class="rewards-scroll-area">
+
+        <header class="home-header">
+          <h1 class="home-greeting-title">مرحبا كمال</h1>
+          <p class="home-greeting-sub">مسارك صار جاهز، بتحب نكمل ولا نغيره؟</p>
+        </header>
+
+        <section class="rewards-points-card" aria-label="رصيد النقاط">
+          <div class="rewards-points-right">
+            <div class="rewards-points-value-row">
+              <span class="rewards-points-amount">640</span>
+              <span class="rewards-points-label">نقطة</span>
+            </div>
+          </div>
+          <div class="rewards-points-left">
+            <img src="assets/images/mascot_pin.png" alt="تميمة مسار" class="rewards-mascot-img">
+          </div>
+        </section>
+
+        <section class="challenges-section" aria-label="تحديات الأسبوع">
+          <div class="challenges-header">
+            <h2 class="challenges-title">تحديات الأسبوع</h2>
+            <button type="button" class="challenges-see-all">عرض الكل</button>
+          </div>
+
+          <div class="rewards-challenges-list">
+
+            <article class="rewards-challenge-card">
+              <div class="rewards-challenge-top">
+                <div class="challenge-main">
+                  <img src="assets/images/shrak_bread_icon.png" alt="خبز الشراك مع أم محمد" class="challenge-img">
+                  <div class="challenge-info">
+                    <h3 class="challenge-name">خبز الشراك مع أم محمد</h3>
+                    <div class="challenge-meta">
+                      <span class="challenge-location">السلط</span>
+                      <span class="meta-dot">•</span>
+                      <span class="challenge-rating">4.9</span>
+                      <span class="challenge-star">★</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="challenge-points-badge">
+                  25 نقطة
+                </div>
+              </div>
+
+              <div class="rewards-progress-wrapper">
+                <div class="rewards-progress-label-row">
+                  <span class="rewards-progress-steps">2 / 3 خطوات</span>
+                  <span class="rewards-progress-percent">67%</span>
+                </div>
+                <div class="rewards-progress-bar-track">
+                  <div class="rewards-progress-bar-fill" style="width: 67%;"></div>
+                </div>
+              </div>
+
+              <button type="button" class="btn-log-step">
+                سجّل خطوة
+              </button>
+            </article>
+
+            <article class="rewards-challenge-card">
+              <div class="rewards-challenge-top">
+                <div class="challenge-main">
+                  <img src="assets/images/wadi_hidan.png" alt="مسير وادي الهيدان" class="challenge-img">
+                  <div class="challenge-info">
+                    <h3 class="challenge-name">مسير وادي الهيدان</h3>
+                    <div class="challenge-meta">
+                      <span class="challenge-location">مادبا</span>
+                      <span class="meta-dot">•</span>
+                      <span class="challenge-rating">4.8</span>
+                      <span class="challenge-star">★</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="challenge-points-badge">
+                  25 نقطة
+                </div>
+              </div>
+
+              <div class="rewards-progress-wrapper">
+                <div class="rewards-progress-label-row">
+                  <span class="rewards-progress-steps">1 / 4 خطوات</span>
+                  <span class="rewards-progress-percent">25%</span>
+                </div>
+                <div class="rewards-progress-bar-track">
+                  <div class="rewards-progress-bar-fill" style="width: 25%;"></div>
+                </div>
+              </div>
+
+              <button type="button" class="btn-log-step">
+                سجّل خطوة
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <section class="badges-section" aria-label="أوسمة الإنجاز">
+          <div class="challenges-header">
+            <div class="suggestions-title-group">
+              <h2 class="challenges-title">أوسمة الإنجاز</h2>
+              <p class="suggestions-sub">اجمع الأوسمة وارتقِ بمستواك</p>
+            </div>
+            <button type="button" class="challenges-see-all" id="btnSeeAllBadges">عرض الكل</button>
+          </div>
+
+          <div class="badges-grid" id="rewardsBadgesGrid">
+
+            <div class="badge-item-card active" data-badge-id="first_hike">
+              <div class="badge-icon-circle pink-bg">
+                <span class="badge-emoji">🥾</span>
+              </div>
+              <span class="badge-item-name">أول مسير</span>
+            </div>
+
+            <div class="badge-item-card active" data-badge-id="gourmet">
+              <div class="badge-icon-circle pink-bg">
+                <span class="badge-emoji">🍽️</span>
+              </div>
+              <span class="badge-item-name">ذوّاق</span>
+            </div>
+
+            <div class="badge-item-card active" data-badge-id="photographer">
+              <div class="badge-icon-circle pink-bg">
+                <span class="badge-emoji">📸</span>
+              </div>
+              <span class="badge-item-name">مصوّر</span>
+            </div>
+
+            <div class="badge-item-card active" data-badge-id="aqaba_diver">
+              <div class="badge-icon-circle pink-bg">
+                <span class="badge-emoji">🤿</span>
+              </div>
+              <span class="badge-item-name">غواص العقبة</span>
+            </div>
+
+            <div class="badge-item-card active" data-badge-id="petra_knight">
+              <div class="badge-icon-circle pink-bg">
+                <span class="badge-emoji">🏛️</span>
+              </div>
+              <span class="badge-item-name">فارس البترا</span>
+            </div>
+
+            <div class="badge-item-card locked" data-badge-id="7_days">
+              <div class="badge-icon-circle beige-bg">
+                <span class="badge-emoji">🔥</span>
+              </div>
+              <span class="badge-item-name">٧ أيام</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="rewards-marketplace-section" aria-label="سوق المكافآت">
+          <div class="challenges-header">
+            <div class="suggestions-title-group">
+              <h2 class="challenges-title">سوق المكافآت</h2>
+              <p class="suggestions-sub">استبدل نقاطك بخصومات وتجارب أردنية حقيقية</p>
+            </div>
+            <div class="market-points-indicator">
+              <span>رصيدك: <strong id="marketCurrentPointsVal">640</strong> ⭐</span>
+            </div>
+          </div>
+
+          <div class="marketplace-grid" id="rewardsMarketplaceGrid">
+
+            <div class="market-voucher-card">
+              <div class="market-voucher-header">
+                <span class="market-voucher-tag">خصم 20%</span>
+                <span class="market-cost-tag">150 نقطة ⭐</span>
+              </div>
+              <h3 class="market-voucher-title">إفطار بلدي وتراثي في السلط 🫓</h3>
+              <p class="market-voucher-desc">خصم 20% على أشهى وجبة إفطار بلدية وتجربة طعام أصيلة في بيوت السلط التراثية.</p>
+              <div class="market-voucher-footer">
+                <span class="market-partner-name">بيت السلط التراثي</span>
+                <button type="button" class="btn-redeem-voucher" data-cost="150" data-title="خصم 20% إفطار السلط" data-code="MASAR-SALT-20">استبدل الآن</button>
+              </div>
+            </div>
+
+            <div class="market-voucher-card">
+              <div class="market-voucher-header">
+                <span class="market-voucher-tag free-tag">مجاناً ☕</span>
+                <span class="market-cost-tag">50 نقطة ⭐</span>
+              </div>
+              <h3 class="market-voucher-title">فنجان قهوة وضيافة في شارع الرينبو</h3>
+              <p class="market-voucher-desc">فنجان قهوة أردنية أصيلة وضيافة مجانية في جبل عمّان التاريخي.</p>
+              <div class="market-voucher-footer">
+                <span class="market-partner-name">مقهى رينبو القديم</span>
+                <button type="button" class="btn-redeem-voucher" data-cost="50" data-title="قهوة مجانية في الرينبو" data-code="MASAR-COFFEE-FREE">استبدل الآن</button>
+              </div>
+            </div>
+
+            <div class="market-voucher-card">
+              <div class="market-voucher-header">
+                <span class="market-voucher-tag">خصم 15 د.أ</span>
+                <span class="market-cost-tag">300 نقطة ⭐</span>
+              </div>
+              <h3 class="market-voucher-title">مخيمات وادي رم النجمية 🌌</h3>
+              <p class="market-voucher-desc">قسيمة خصم 15 دينار على المبيت وعشاء الزرب وجلسات السمر وتأمل النجوم.</p>
+              <div class="market-voucher-footer">
+                <span class="market-partner-name">مخيم نجوم رم</span>
+                <button type="button" class="btn-redeem-voucher" data-cost="300" data-title="خصم 15 د.أ مخيم رم" data-code="MASAR-RUM-CAMP15">استبدل الآن</button>
+              </div>
+            </div>
+
+            <div class="market-voucher-card">
+              <div class="market-voucher-header">
+                <span class="market-voucher-tag free-tag">ورشة مجانية 🎨</span>
+                <span class="market-cost-tag">200 نقطة ⭐</span>
+              </div>
+              <h3 class="market-voucher-title">ورشة صناعة الفسيفساء في مادبا</h3>
+              <p class="market-voucher-desc">تذكرة مجانية للمشاركة في ورشة نحت وصناعة الفسيفساء الحجرية مع الحرفيين.</p>
+              <div class="market-voucher-footer">
+                <span class="market-partner-name">مشغل فسيفساء مادبا</span>
+                <button type="button" class="btn-redeem-voucher" data-cost="200" data-title="ورشة فسيفساء مجانية" data-code="MASAR-MOSAIC-FREE">استبدل الآن</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="leaderboard-section" aria-label="لوحة المتصدرين">
+          <div class="challenges-header">
+            <div class="suggestions-title-group">
+              <h2 class="challenges-title">لوحة المتصدرين</h2>
+              <p class="suggestions-sub">هذا الأسبوع</p>
+            </div>
+            <button type="button" class="challenges-see-all">الأصدقاء</button>
+          </div>
+
+          <div class="leaderboard-card">
+
+            <div class="leaderboard-row">
+              <div class="leader-user">
+                <span class="leader-rank-medal">🥇</span>
+                <span class="leader-name">سارة العمري</span>
+              </div>
+              <div class="leader-points">
+                <span class="leader-points-num">1240</span>
+                <span class="leader-points-lbl">نقطة</span>
+              </div>
+            </div>
+
+            <div class="leaderboard-row">
+              <div class="leader-user">
+                <span class="leader-rank-medal">🥈</span>
+                <span class="leader-name">خالد الحوراني</span>
+              </div>
+              <div class="leader-points">
+                <span class="leader-points-num">1080</span>
+                <span class="leader-points-lbl">نقطة</span>
+              </div>
+            </div>
+
+            <div class="leaderboard-row">
+              <div class="leader-user">
+                <span class="leader-rank-medal">🥉</span>
+                <span class="leader-name">لينا الطراونة</span>
+              </div>
+              <div class="leader-points">
+                <span class="leader-points-num">970</span>
+                <span class="leader-points-lbl">نقطة</span>
+              </div>
+            </div>
+
+            <div class="leaderboard-row highlight-user">
+              <div class="leader-user">
+                <span class="leader-rank-badge">4</span>
+                <span class="leader-name">كمال (أنت)</span>
+              </div>
+              <div class="leader-points">
+                <span class="leader-points-num">640</span>
+                <span class="leader-points-lbl">نقطة</span>
+              </div>
+            </div>
+
+            <div class="leaderboard-row">
+              <div class="leader-user">
+                <span class="leader-rank-badge badge-gray">5</span>
+                <span class="leader-name">عمر الشوبكي</span>
+              </div>
+              <div class="leader-points">
+                <span class="leader-points-num">520</span>
+                <span class="leader-points-lbl">نقطة</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="suggestions-section" aria-label="اقتراحات لك">
+          <div class="suggestions-header">
+            <div class="suggestions-title-group">
+              <h2 class="suggestions-title">اقتراحات لك</h2>
+              <p class="suggestions-sub">تجارب تناسب ذوقك</p>
+            </div>
+            <button type="button" class="challenges-see-all">عرض الكل</button>
+          </div>
+
+          <div class="suggestions-list">
+
+            <article class="suggestion-card">
+              <div class="suggestion-img-wrap">
+                <img src="assets/images/citadel_sunset.jpg" alt="غروب من جبل القلعة" class="suggestion-img">
+              </div>
+              <div class="suggestion-content">
+                <h3 class="suggestion-name">غروب من جبل القلعة</h3>
+                <p class="suggestion-desc">استمتع بإطلالة هادئة على عمّان وقت الغروب.</p>
+                <div class="suggestion-meta">
+                  <span class="suggestion-tag">طبيعة • تصوير</span>
+                  <svg class="suggestion-cat-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#85122D" stroke-width="2.2" aria-hidden="true">
+                    <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="1.5" y="9.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" />
+                  </svg>
+                  <span class="meta-separator"></span>
+                  <div class="suggestion-loc-group">
+                    <svg class="suggestion-loc-icon" width="13" height="13" viewBox="0 0 24 28" fill="#85122D" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 8.5 12 16 12 16s12-7.5 12-16c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span class="suggestion-loc-text">عمّان</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="suggestion-card">
+              <div class="suggestion-img-wrap">
+                <img src="assets/images/salt_alleys.jpg" alt="اكتشف حكايات السلط" class="suggestion-img">
+              </div>
+              <div class="suggestion-content">
+                <h3 class="suggestion-name">اكتشف حكايات السلط</h3>
+                <p class="suggestion-desc">جولة قصيرة بين البيوت القديمة والأزقة التاريخية.</p>
+                <div class="suggestion-meta">
+                  <span class="suggestion-tag">تاريخ • ثقافة</span>
+                  <svg class="suggestion-cat-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#85122D" stroke-width="2.2" aria-hidden="true">
+                    <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="1.5" y="9.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" />
+                  </svg>
+                  <span class="meta-separator"></span>
+                  <div class="suggestion-loc-group">
+                    <svg class="suggestion-loc-icon" width="13" height="13" viewBox="0 0 24 28" fill="#85122D" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 8.5 12 16 12 16s12-7.5 12-16c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span class="suggestion-loc-text">السلط</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="suggestion-card">
+              <div class="suggestion-img-wrap">
+                <img src="assets/images/arabic_coffee.jpg" alt="قهوة على طريقة أهل الأردن" class="suggestion-img">
+              </div>
+              <div class="suggestion-content">
+                <h3 class="suggestion-name">قهوة على طريقة أهل الأردن</h3>
+                <p class="suggestion-desc">تعرّف على العادات المحلية واستمتع بجلسة قهوة أصيلة.</p>
+                <div class="suggestion-meta">
+                  <span class="suggestion-tag">طعام • تجربة محلية</span>
+                  <svg class="suggestion-cat-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#85122D" stroke-width="2.2" aria-hidden="true">
+                    <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="1.5" width="5" height="5" rx="1.5" />
+                    <rect x="1.5" y="9.5" width="5" height="5" rx="1.5" />
+                    <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" />
+                  </svg>
+                  <span class="meta-separator"></span>
+                  <div class="suggestion-loc-group">
+                    <svg class="suggestion-loc-icon" width="13" height="13" viewBox="0 0 24 28" fill="#85122D" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 8.5 12 16 12 16s12-7.5 12-16c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span class="suggestion-loc-text">عمّان</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <div class="home-bottom-spacer" aria-hidden="true"></div>
+
+      </div>
+
+      <nav class="home-bottom-nav" aria-label="شريط التنقل السفلي">
+
+        <button type="button" class="nav-item" id="navItemHome2" aria-label="الرئيسية">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5L12 3l9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10.5z"/>
+            <path d="M9 22v-6a3 3 0 0 1 6 0v6"/>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-item active" aria-label="الجوائز والإنجازات" aria-current="page">
+          <div class="nav-icon-pill">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="8.5" r="5.5" stroke="#85122D"/>
+              <polygon points="12 5.5 13 7.8 15.5 8 13.6 9.7 14.2 12.2 12 10.9 9.8 12.2 10.4 9.7 8.5 8 11 7.8 12 5.5" fill="#85122D" stroke="none"/>
+              <path d="M8.2 13.5L6.5 22L12 19.2L17.5 22L15.8 13.5" stroke="#85122D"/>
+            </svg>
+          </div>
+        </button>
+
+        <button type="button" class="nav-item" id="navItemMap2" aria-label="دليل مسار">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 8V4H8"/>
+            <rect width="16" height="12" x="4" y="8" rx="3"/>
+            <path d="M2 14h2"/>
+            <path d="M20 14h2"/>
+            <path d="M9 13v1"/>
+            <path d="M15 13v1"/>
+            <path d="M9 17h6"/>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-item" id="navItemProfile2" aria-label="الملف الشخصي">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+      </nav>
+    </main>
+
+    <main class="assistant-container" id="assistantContainer" aria-label="المساعد الذكي" hidden>
+      <div class="assistant-scroll-area">
+
+        <header class="assistant-header">
+          <div class="assistant-header-badge">
+            <svg width="40" height="40" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <rect x="10" y="12" width="60" height="56" rx="28" fill="#85122D"/>
+              <polygon points="40,15 44,20 40,25 36,20" fill="#FFFFFF"/>
+              <circle cx="40" cy="20" r="1.5" fill="#85122D"/>
+              <circle cx="68" cy="30" r="6" fill="#85122D" stroke="#FFFFFF" stroke-width="2.5"/>
+              <circle cx="40" cy="44" r="19" fill="#FFFFFF"/>
+              <path d="M31 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M44 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M35 48c2 3 8 3 10 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="assistant-header-text">
+            <h1 class="assistant-title">دليل مسار</h1>
+            <p class="assistant-sub">رفيقك ومستشارك في كل خطوة بالأردن</p>
+          </div>
+        </header>
+
+        <section class="assistant-chat-card" aria-label="محادثة دليل مسار">
+
+          <div class="assistant-card-mascot-wrap">
+            <svg class="assistant-main-mascot" width="76" height="76" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <rect x="10" y="12" width="60" height="56" rx="28" fill="#85122D"/>
+              <circle cx="28" cy="20" r="2.5" fill="#FFFFFF"/>
+              <polygon points="40,15 44,20 40,25 36,20" fill="#FFFFFF"/>
+              <circle cx="40" cy="20" r="1.5" fill="#85122D"/>
+              <circle cx="52" cy="20" r="2.5" fill="#FFFFFF"/>
+              <circle cx="68" cy="30" r="6" fill="#85122D" stroke="#FFFFFF" stroke-width="2.5"/>
+              <circle cx="40" cy="44" r="19" fill="#FFFFFF"/>
+              <path d="M31 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M44 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M35 48c2 3 8 3 10 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="28" cy="46" r="2" fill="#F4A261" opacity="0.6"/>
+              <circle cx="52" cy="46" r="2" fill="#F4A261" opacity="0.6"/>
+            </svg>
+            <h2 class="assistant-card-subtitle">مستكشف الأردن – رفيقك في الرحلة</h2>
+          </div>
+
+          <div class="assistant-messages-area" id="assistantMessagesList">
+
+            <div class="chat-bubble-row bot-row">
+              <div class="chat-avatar-mini">
+                <svg width="24" height="24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <rect x="10" y="12" width="60" height="56" rx="28" fill="#85122D"/>
+                  <polygon points="40,15 44,20 40,25 36,20" fill="#FFFFFF"/>
+                  <circle cx="40" cy="44" r="19" fill="#FFFFFF"/>
+                  <path d="M31 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M44 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M35 48c2 3 8 3 10 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="chat-bubble-content">
+                <p id="assistantWelcomeText">أهلاً بك! 👋 أنا رفيقك المستكشف.<br>اسألني عن أي تجربة أو مكان أو عن نقاطك وتحدياتك، وأنا جاهز أساعدك.</p>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <div class="assistant-chips-container" aria-label="اقتراحات سريعة">
+          <button type="button" class="assistant-chip-btn" data-query="كم نقطة عندي؟">كم نقطة عندي؟</button>
+          <button type="button" class="assistant-chip-btn" data-query="اقترح لي مغامرة">اقترح لي مغامرة</button>
+          <button type="button" class="assistant-chip-btn" data-query="وش تحديات الأسبوع؟">وش تحديات الأسبوع؟</button>
+          <button type="button" class="assistant-chip-btn" data-query="أماكن للعائلة">أماكن للعائلة</button>
+        </div>
+
+        <div class="assistant-input-wrapper">
+          <form class="assistant-input-form" id="assistantChatForm" onsubmit="return false;">
+            <button type="button" class="btn-assistant-mic" id="btnAssistantMic" aria-label="تسجيل صوتي" title="تحدث مع راشد صوتياً">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </button>
+            <input type="text" class="assistant-text-input" id="assistantTextInput" placeholder="اكتب سؤالك أو تحدث مع راشد..." autocomplete="off">
+            <button type="submit" class="btn-assistant-send" id="btnAssistantSend" aria-label="إرسال">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <nav class="home-bottom-nav" aria-label="شريط التنقل السفلي">
+
+        <button type="button" class="nav-item" id="navItemHome3" aria-label="الرئيسية">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5L12 3l9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10.5z"/>
+            <path d="M9 22v-6a3 3 0 0 1 6 0v6"/>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-item" id="navItemRewards3" aria-label="الجوائز والإنجازات">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8.5" r="5.5"/>
+            <polygon points="12 5.5 13 7.8 15.5 8 13.6 9.7 14.2 12.2 12 10.9 9.8 12.2 10.4 9.7 8.5 8 11 7.8 12 5.5" fill="#2C2C2C" stroke="none"/>
+            <path d="M8.2 13.5L6.5 22L12 19.2L17.5 22L15.8 13.5"/>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-item active" id="navItemMap3" aria-label="دليل مسار" aria-current="page">
+          <div class="nav-icon-pill">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8V4H8"/>
+              <rect width="16" height="12" x="4" y="8" rx="3"/>
+              <path d="M2 14h2"/>
+              <path d="M20 14h2"/>
+              <path d="M9 13v1"/>
+              <path d="M15 13v1"/>
+              <path d="M9 17h6"/>
+            </svg>
+          </div>
+        </button>
+
+        <button type="button" class="nav-item" id="navItemProfile3" aria-label="الملف الشخصي">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+      </nav>
+    </main>
+
+    <main class="settings-container" id="settingsContainer" aria-label="الإعدادات" hidden>
+      <div class="settings-content-wrapper">
+
+        <header class="settings-top-header">
+          <div class="settings-user-preview" id="settingsUserPreview" role="button" tabindex="0" title="تعديل الملف الشخصي">
+            <div class="settings-user-avatar-circle" id="settingsUserAvatarCircle">
+              <img src="assets/images/mascot_pin.png" alt="صورة المستخدم" class="settings-user-avatar-img" id="settingsUserAvatarImg">
+            </div>
+            <span class="settings-user-name" id="settingsUserName">اسم المستخدم</span>
+          </div>
+
+          <button type="button" class="btn-settings-back" id="btnSettingsBack" aria-label="رجوع">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+        </header>
+
+        <section class="settings-flat-group" aria-label="حسابك">
+          <div class="settings-group-header-row">
+            <svg class="settings-section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <h2 class="settings-section-heading no-margin">حسابك</h2>
+          </div>
+
+          <div class="settings-flat-row" id="rowPersonalInfo" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label muted-label">المعلومات الشخصية</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-flat-group" aria-label="الاعدادات">
+          <h2 class="settings-section-heading">الاعدادات</h2>
+
+          <div class="settings-flat-row" id="rowLanguage" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">اللغة</span>
+                <span class="settings-row-sub-label" id="currentLangLabel">العربية</span>
+              </div>
+            </div>
+            <svg class="settings-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </div>
+
+          <div class="settings-flat-row" id="rowNotifications" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">الاشعارات</span>
+              </div>
+            </div>
+            <svg class="settings-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </div>
+
+          <div class="settings-flat-row" id="rowLocation" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">الموقع</span>
+              </div>
+            </div>
+            <svg class="settings-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </div>
+
+          <div class="settings-flat-row settings-switch-row">
+            <div class="settings-row-lead">
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">إشعارات النظام</span>
+              </div>
+            </div>
+            <button type="button" class="settings-switch-toggle active" id="toggleSystemNotifications" role="switch" aria-checked="true" aria-label="إشعارات النظام">
+              <span class="settings-switch-slider"></span>
+            </button>
+          </div>
+
+          <div class="settings-flat-row settings-switch-row">
+            <div class="settings-row-lead">
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">الوضع الليلي</span>
+              </div>
+            </div>
+            <button type="button" class="settings-switch-toggle" id="toggleDarkMode" role="switch" aria-checked="false" aria-label="الوضع الليلي">
+              <span class="settings-switch-slider"></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="settings-flat-group" aria-label="الدعم">
+
+          <div class="settings-flat-row" id="rowSupportFeedback" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-section-heading no-margin">الدعم</span>
+                <span class="settings-row-main-label muted-label">الاقتراحات والشكاوى</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-flat-row" id="rowEmergencyNumbers" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2v4"/>
+                <path d="M4.93 4.93l2.83 2.83"/>
+                <path d="M2 12h4"/>
+                <path d="M4.93 19.07l2.83-2.83"/>
+                <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+                <path d="M19.07 4.93l-2.83 2.83"/>
+                <path d="M22 12h-4"/>
+                <path d="M19.07 19.07l-2.83-2.83"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">ارقام الطوارئ</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-flat-group" aria-label="معلومات التطبيق">
+          <h2 class="settings-section-heading">معلومات التطبيق</h2>
+
+          <div class="settings-flat-row" id="rowAboutMasar" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">عن مسار</span>
+              </div>
+            </div>
+            <svg class="settings-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </div>
+
+          <div class="settings-flat-row" id="rowSecurityPrivacy" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">الامان والخصوصية</span>
+              </div>
+            </div>
+            <svg class="settings-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </div>
+
+          <div class="settings-flat-row" id="rowShareApp" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">شارك تطبيق مسار</span>
+              </div>
+            </div>
+            <svg class="settings-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </div>
+
+          <div class="settings-flat-row" id="rowRateApp" role="button" tabindex="0">
+            <div class="settings-row-lead">
+              <svg class="settings-row-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+              <div class="settings-row-text-group">
+                <span class="settings-row-main-label">قيم التطبيق</span>
+              </div>
+            </div>
+            <svg class="settings-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </div>
+        </section>
+
+        <div class="settings-logout-row" id="btnLogout" role="button" tabindex="0">
+          <svg class="settings-logout-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D44A58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span class="settings-logout-text">تسجيل خروج</span>
+        </div>
+
+      </div>
+    </main>
+
+    <main class="experience-detail-container" id="experienceDetailContainer" aria-label="تفاصيل التجربة" hidden>
+      <div class="exp-detail-scroll-area">
+
+        <div class="exp-detail-hero">
+          <img src="assets/images/wadi_mujib.png" alt="مغامرة في وادي الموجب" class="exp-detail-hero-img" id="expDetailHeroImg">
+
+          <button type="button" class="exp-detail-back-btn" id="btnExpDetailBack" aria-label="رجوع">
+            <span>رجوع</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/>
+              <path d="M21.67 3.87L19.9 2.1 10 12l9.9 9.9 1.77-1.77L13.54 12z"/>
+            </svg>
+          </button>
+
+          <div class="exp-hero-dots" aria-hidden="true">
+            <span class="hero-dot active"></span>
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+          </div>
+        </div>
+
+        <div class="exp-detail-body">
+
+          <h1 class="exp-detail-title" id="expDetailTitle">مغامرة في وادي الموجب</h1>
+
+          <div class="exp-detail-meta-row">
+            <div class="exp-detail-meta-item">
+              <svg class="exp-meta-loc-icon" width="13" height="15" viewBox="0 0 24 28" fill="#85122D" aria-hidden="true">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 8.5 12 16 12 16s12-7.5 12-16c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span class="exp-meta-loc-text" id="expDetailLocation">وادي الموجب</span>
+            </div>
+            <svg class="exp-meta-cat-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#424628" stroke-width="2.2" aria-hidden="true">
+              <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" />
+              <rect x="9.5" y="1.5" width="5" height="5" rx="1.5" />
+              <rect x="1.5" y="9.5" width="5" height="5" rx="1.5" />
+              <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" />
+            </svg>
+            <span class="exp-meta-cat-text" id="expDetailCategory">مغامرة • طبيعة</span>
+          </div>
+
+          <div class="exp-detail-badges-row">
+            <div class="exp-detail-badge" id="expDetailDuration">
+              3 ساعات
+            </div>
+            <div class="exp-detail-badge" id="expDetailPrice">
+              15 د.أ
+            </div>
+          </div>
+
+          <section class="exp-detail-activities-section">
+            <h2 class="exp-activities-title">ماذا ستعيش؟</h2>
+
+            <ol class="exp-activities-list" id="expActivitiesList">
+
+              <li class="exp-activity-card card-white">
+                <span class="exp-step-badge">1</span>
+                <span class="exp-step-text">استكشف الوادي</span>
+              </li>
+
+              <li class="exp-activity-card card-pink">
+                <span class="exp-step-badge">2</span>
+                <span class="exp-step-text">امش بين المياه والصخور</span>
+              </li>
+
+              <li class="exp-activity-card card-white">
+                <span class="exp-step-badge">3</span>
+                <span class="exp-step-text">اكتشف المناظر الطبيعية</span>
+              </li>
+
+              <li class="exp-activity-card card-pink">
+                <span class="exp-step-badge badge-dark">4</span>
+                <span class="exp-step-text">التقط لحظتك الخاصة</span>
+              </li>
+            </ol>
+          </section>
+
+          <section class="exp-audio-story-card" aria-label="حكاية المكان الصوتية">
+            <div class="exp-audio-story-header">
+              <div class="exp-audio-badge">
+                <span id="expAudioStoryBadge">حكاية المكان 🎧</span>
+              </div>
+              <span class="exp-audio-duration" id="expAudioDuration">01:45</span>
+            </div>
+            <div class="exp-audio-player-row">
+              <button type="button" class="btn-audio-play" id="btnAudioPlay" aria-label="تشغيل الحكاية">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="audioPlayIcon">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </button>
+              <div class="audio-waves-wrap" id="audioWavesWrap">
+                <span class="audio-bar"></span>
+                <span class="audio-bar"></span>
+                <span class="audio-bar"></span>
+                <span class="audio-bar"></span>
+                <span class="audio-bar"></span>
+                <span class="audio-bar"></span>
+                <span class="audio-bar"></span>
+                <span class="audio-bar"></span>
+              </div>
+              <span class="audio-host-label" id="audioHostLabel">بصوت الدليل المحلي</span>
+            </div>
+          </section>
+
+          <section class="exp-trail-weather-card" aria-label="حالة الطقس والأمان">
+            <div class="trail-weather-header">
+              <div class="trail-weather-title-group">
+                <h3 class="trail-weather-title">رادار الطقس والأمان للمسار 🌦️</h3>
+                <span class="trail-safety-tag safe" id="trailSafetyTag">آمن للمسير 🟢</span>
+              </div>
+              <span class="trail-temp-val" id="trailTempVal">24° م</span>
+            </div>
+            <div class="trail-weather-metrics-grid">
+              <div class="trail-metric-item">
+                <span class="metric-label">الرياح</span>
+                <span class="metric-val" id="trailWindVal">12 كم/س</span>
+              </div>
+              <div class="trail-metric-item">
+                <span class="metric-label">مجرى السيول</span>
+                <span class="metric-val" id="trailFloodVal">منخفض جداً</span>
+              </div>
+              <div class="trail-metric-item">
+                <span class="metric-label">الغروب</span>
+                <span class="metric-val" id="trailSunsetVal">06:20 م</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="exp-packing-checklist-section" aria-label="قائمة التجهيز">
+            <div class="exp-packing-header">
+              <h3 class="exp-packing-title">مستلزمات المسار 🎒</h3>
+              <span class="packing-progress-tag" id="packingProgressTag">0/4 جاهز</span>
+            </div>
+            <div class="packing-items-list" id="packingItemsList">
+              <label class="packing-check-item">
+                <input type="checkbox" class="packing-checkbox">
+                <span class="packing-check-box"></span>
+                <span class="packing-check-text">حذاء مشي مائي مناسب للصخور 👟</span>
+              </label>
+              <label class="packing-check-item">
+                <input type="checkbox" class="packing-checkbox">
+                <span class="packing-check-box"></span>
+                <span class="packing-check-text">حقيبة ضد الماء للهاتف والمقتنيات 📱</span>
+              </label>
+              <label class="packing-check-item">
+                <input type="checkbox" class="packing-checkbox">
+                <span class="packing-check-box"></span>
+                <span class="packing-check-text">ماء شرب (1.5 لتر على الأقل) 💧</span>
+              </label>
+              <label class="packing-check-item">
+                <input type="checkbox" class="packing-checkbox">
+                <span class="packing-check-box"></span>
+                <span class="packing-check-text">واقي شمس وغطاء للرأس 🧢</span>
+              </label>
+            </div>
+          </section>
+
+          <div class="exp-host-card" id="expHostCard" hidden>
+            <div class="exp-host-info">
+              <h3 class="exp-host-name" id="expHostName">سارة من السلط</h3>
+              <p class="exp-host-desc" id="expHostDesc">أحب أشارك الزوار وصفات تعلّمتها من عائلتي وقصص من السلط.</p>
+            </div>
+            <div class="exp-host-avatar-wrap">
+              <img src="assets/images/sara_host.png" alt="المضيف" class="exp-host-avatar-img" id="expHostAvatar">
+            </div>
+          </div>
+
+          <div class="exp-suitability-banner" id="expSuitabilityBanner">
+            <span class="suitability-text" id="expSuitabilityText">مناسبة لعشاق المغامرة والطبيعة.</span>
+          </div>
+
+          <div class="exp-detail-action-wrap">
+            <button type="button" class="btn-add-to-trip" id="btnAddToTrip">
+              أضف إلى رحلتي
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <div class="masar-modal-backdrop" id="exploreAllModal" aria-hidden="true" role="dialog" aria-label="استكشف جميع التجارب">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title" id="exploreModalTitle">استكشف جميع تجارب الأردن 🧭</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="exploreAllModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+
+        <div class="explore-search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#85122D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="explore-search-input" id="exploreSearchInput" placeholder="ابحث عن تجربة أو مدينة...">
+        </div>
+
+        <div class="explore-pills-row" id="exploreCategoryPills">
+          <button type="button" class="explore-pill active" data-cat="all">الكل</button>
+          <button type="button" class="explore-pill" data-cat="كنوز مخفية">كنوز مخفية 💎</button>
+          <button type="button" class="explore-pill" data-cat="طبيعة">طبيعة 🌿</button>
+          <button type="button" class="explore-pill" data-cat="مغامرة">مغامرة 🧗</button>
+          <button type="button" class="explore-pill" data-cat="تاريخ">تاريخ 🏰</button>
+          <button type="button" class="explore-pill" data-cat="طعام">طعام 🍽️</button>
+          <button type="button" class="explore-pill" data-cat="ثقافة">ثقافة ⛺</button>
+        </div>
+
+        <div class="explore-cards-grid" id="exploreCardsList">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="badgeDetailModal" aria-hidden="true" role="dialog" aria-label="تفاصيل الوسام">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">وسام الإنجاز</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="badgeDetailModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div class="badge-detail-hero">
+          <div class="badge-big-circle pink-bg" id="modalBadgeIconWrap">
+            <span class="badge-emoji" id="modalBadgeEmoji">🥾</span>
+          </div>
+          <h3 class="badge-modal-name" id="modalBadgeName">أول مسير</h3>
+          <span class="badge-modal-status" id="modalBadgeStatus">مفتوح 🎖️</span>
+          <p class="badge-modal-desc" id="modalBadgeDesc">أكملت أول مسار استكشافي في الطبيعة الأردنية وحصلت على وسام المستكشف المبتدئ.</p>
+        </div>
+
+        <div class="badge-progress-wrap" id="modalBadgeProgressWrap">
+          <div class="rewards-progress-label-row">
+            <span class="rewards-progress-steps" id="modalBadgeProgressLabel">مكتمل 100%</span>
+            <span class="rewards-progress-percent" id="modalBadgeProgressPercent">1/1</span>
+          </div>
+          <div class="rewards-progress-bar-track">
+            <div class="rewards-progress-bar-fill" id="modalBadgeProgressBar" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="btnClaimBadgeReward" style="margin-top: 10px;">
+          <span>رائع! فهمت</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="allBadgesModal" aria-hidden="true" role="dialog" aria-label="جميع أوسمة الإنجاز">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">جميع أوسمة الإنجاز 🎖️</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="allBadgesModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+
+        <div class="all-badges-summary-card">
+          <div class="all-badges-stats-row">
+            <div>
+              <span class="all-badges-count-title">الأوسمة المجمّعة</span>
+              <h3 class="all-badges-count-val">5 من 12 وسام</h3>
+            </div>
+            <div class="all-badges-points-badge">
+              <span>+150 نقطة مكتسبة ⭐</span>
+            </div>
+          </div>
+          <div class="rewards-progress-bar-track" style="margin-top: 10px;">
+            <div class="rewards-progress-bar-fill" style="width: 42%;"></div>
+          </div>
+        </div>
+
+        <div class="explore-pills-row" id="allBadgesFilterRow" style="margin-top: 2px;">
+          <button type="button" class="explore-pill active" data-badge-filter="all">الكل (12)</button>
+          <button type="button" class="explore-pill" data-badge-filter="unlocked">مفتوحة 🎖️ (5)</button>
+          <button type="button" class="explore-pill" data-badge-filter="locked">مغلقة 🔒 (7)</button>
+        </div>
+
+        <div class="all-badges-full-grid" id="allBadgesModalList">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="editProfileModal" aria-hidden="true" role="dialog" aria-label="تعديل الملف الشخصي">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">تعديل الملف الشخصي</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="editProfileModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <form id="editProfileForm" onsubmit="return false;">
+          <div class="profile-section">
+            <label for="editNicknameInput" class="section-title" style="display:block; margin-bottom:8px;">اسم المستخدم أو الكنية</label>
+            <div class="profile-input-wrapper">
+              <input type="text" id="editNicknameInput" class="profile-input-field" placeholder="اسمك">
+            </div>
+          </div>
+
+          <div class="profile-section" style="margin-top: 16px;">
+            <label class="section-title" style="display:block; margin-bottom:8px;">الفئة العمرية</label>
+            <fieldset class="age-options">
+              <div class="age-row age-row-1">
+                <label class="pill-option">
+                  <input type="radio" name="editAgeRange" value="18 - 24">
+                  <span class="pill-btn">18 - 24</span>
+                </label>
+                <label class="pill-option">
+                  <input type="radio" name="editAgeRange" value="أقل من 18">
+                  <span class="pill-btn">أقل من 18</span>
+                </label>
+              </div>
+              <div class="age-row age-row-2">
+                <label class="pill-option">
+                  <input type="radio" name="editAgeRange" value="36+">
+                  <span class="pill-btn">+36</span>
+                </label>
+                <label class="pill-option">
+                  <input type="radio" name="editAgeRange" value="25 - 35">
+                  <span class="pill-btn">25 - 35</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <button type="submit" class="btn-primary" id="btnSaveProfileChanges" style="margin-top: 20px;">
+            <span>حفظ التعديلات</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="avatarSelectorModal" aria-hidden="true" role="dialog" aria-label="تغيير الصورة الرمزية">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">اختر شخصيتك بمسار 🌟</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="avatarSelectorModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div class="avatars-grid" id="avatarsGrid">
+          <div class="avatar-choice-card selected" data-avatar="mascot">
+            <span class="avatar-emoji-icon">🧭</span>
+            <span class="avatar-choice-label">المستكشف</span>
+          </div>
+          <div class="avatar-choice-card" data-avatar="bedouin">
+            <span class="avatar-emoji-icon">⛺</span>
+            <span class="avatar-choice-label">فارس البادية</span>
+          </div>
+          <div class="avatar-choice-card" data-avatar="chef">
+            <span class="avatar-emoji-icon">🍲</span>
+            <span class="avatar-choice-label">شيف الأصالة</span>
+          </div>
+          <div class="avatar-choice-card" data-avatar="hiker">
+            <span class="avatar-emoji-icon">🥾</span>
+            <span class="avatar-choice-label">محترف المسير</span>
+          </div>
+          <div class="avatar-choice-card" data-avatar="diver">
+            <span class="avatar-emoji-icon">🤿</span>
+            <span class="avatar-choice-label">غواص العقبة</span>
+          </div>
+          <div class="avatar-choice-card" data-avatar="artist">
+            <span class="avatar-emoji-icon">📸</span>
+            <span class="avatar-choice-label">عدسة الأردن</span>
+          </div>
+        </div>
+        <button type="button" class="btn-primary" id="btnSaveAvatarChoice" style="margin-top: 14px;">
+          <span>تعيين الصورة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="languageModal" aria-hidden="true" role="dialog" aria-label="اختيار اللغة">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">اختيار اللغة 🌐</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="languageModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="language-option-card selected" data-lang="ar" style="display:flex; justify-content:space-between; align-items:center; background:#FFF5F6; border:2px solid #85122D; border-radius:12px; padding:14px 16px; cursor:pointer;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:24px;">🇯🇴</span>
+              <div>
+                <strong style="font-size:14.5px; display:block; color:#1E1F1A;">العربية (الأردن)</strong>
+                <span style="font-size:12px; color:#6B665F;">اللغة الافتراضية للتطبيق</span>
+              </div>
+            </div>
+            <span style="color:#85122D; font-size:18px; font-weight:700;">✓</span>
+          </div>
+
+          <div class="language-option-card" data-lang="en" style="display:flex; justify-content:space-between; align-items:center; background:#F8F4EE; border:1px solid #E5DFD5; border-radius:12px; padding:14px 16px; cursor:pointer;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:24px;">🇬🇧</span>
+              <div>
+                <strong style="font-size:14.5px; display:block; color:#1E1F1A;">English (Jordan Guide)</strong>
+                <span style="font-size:12px; color:#6B665F;">English tourist version</span>
+              </div>
+            </div>
+            <span style="color:#8E8A83; font-size:18px;"></span>
+          </div>
+        </div>
+        <button type="button" class="btn-primary" id="btnConfirmLanguage" style="margin-top: 16px;">
+          <span>تأكيد اللغة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="notificationsModal" aria-hidden="true" role="dialog" aria-label="تفضيلات الإشعارات">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">تفضيلات الإشعارات 🔔</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="notificationsModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #F5F1EB;">
+            <div style="text-align:right;">
+              <strong style="font-size:14px; display:block; color:#1E1F1A;">تحديات اليوم والمسارات</strong>
+              <span style="font-size:12px; color:#6B665F;">تذكير بالنقاط والخطوات اليومية</span>
+            </div>
+            <button type="button" class="settings-switch-toggle active" data-pref="challenges" role="switch" aria-checked="true">
+              <span class="settings-switch-slider"></span>
+            </button>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #F5F1EB;">
+            <div style="text-align:right;">
+              <strong style="font-size:14px; display:block; color:#1E1F1A;">توصيات راشد ومسار</strong>
+              <span style="font-size:12px; color:#6B665F;">مقترحات تجارب حسب موقعك الحالي</span>
+            </div>
+            <button type="button" class="settings-switch-toggle active" data-pref="assistant" role="switch" aria-checked="true">
+              <span class="settings-switch-slider"></span>
+            </button>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+            <div style="text-align:right;">
+              <strong style="font-size:14px; display:block; color:#1E1F1A;">عروض التجارب والخصومات</strong>
+              <span style="font-size:12px; color:#6B665F;">تخفيضات المرشدين المحليين</span>
+            </div>
+            <button type="button" class="settings-switch-toggle active" data-pref="offers" role="switch" aria-checked="true">
+              <span class="settings-switch-slider"></span>
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn-primary" id="btnSaveNotificationPrefs" style="margin-top: 16px;">
+          <span>حفظ التفضيلات</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="locationModal" aria-hidden="true" role="dialog" aria-label="تحديد الموقع">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">اختر محافظتك أو وجهتك 📍</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="locationModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div class="city-picker-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:10px;">
+          <div class="city-card selected" data-city="عمّان" style="padding:12px; border:2px solid #85122D; background:#FFF5F6; border-radius:12px; text-align:center; cursor:pointer;">
+            <span style="font-size:20px; display:block;">🏛️</span>
+            <strong style="font-size:13.5px; color:#85122D;">عمّان (العاصمة)</strong>
+          </div>
+          <div class="city-card" data-city="البترا" style="padding:12px; border:1px solid #E5DFD5; background:#F8F4EE; border-radius:12px; text-align:center; cursor:pointer;">
+            <span style="font-size:20px; display:block;">🏺</span>
+            <strong style="font-size:13.5px; color:#1E1F1A;">البترا ووادي موسى</strong>
+          </div>
+          <div class="city-card" data-city="وادي رم" style="padding:12px; border:1px solid #E5DFD5; background:#F8F4EE; border-radius:12px; text-align:center; cursor:pointer;">
+            <span style="font-size:20px; display:block;">🏜️</span>
+            <strong style="font-size:13.5px; color:#1E1F1A;">وادي رم</strong>
+          </div>
+          <div class="city-card" data-city="العقبة" style="padding:12px; border:1px solid #E5DFD5; background:#F8F4EE; border-radius:12px; text-align:center; cursor:pointer;">
+            <span style="font-size:20px; display:block;">🌊</span>
+            <strong style="font-size:13.5px; color:#1E1F1A;">العقبة (البحر الأحمر)</strong>
+          </div>
+          <div class="city-card" data-city="جرش" style="padding:12px; border:1px solid #E5DFD5; background:#F8F4EE; border-radius:12px; text-align:center; cursor:pointer;">
+            <span style="font-size:20px; display:block;">🏛️</span>
+            <strong style="font-size:13.5px; color:#1E1F1A;">جرش وعجلون</strong>
+          </div>
+          <div class="city-card" data-city="السلط" style="padding:12px; border:1px solid #E5DFD5; background:#F8F4EE; border-radius:12px; text-align:center; cursor:pointer;">
+            <span style="font-size:20px; display:block;">🏡</span>
+            <strong style="font-size:13.5px; color:#1E1F1A;">السلط ومادبا</strong>
+          </div>
+        </div>
+        <button type="button" class="btn-primary" id="btnConfirmCityLocation" style="margin-top: 16px;">
+          <span>تأكيد الموقع</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="supportModal" aria-hidden="true" role="dialog" aria-label="مركز المساعدة">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">الدعم والاقتراحات والشكاوى ✍️</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="supportModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <form id="supportFeedbackForm" style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <label style="font-size:13px; font-weight:600; color:#1E1F1A; display:block; margin-bottom:6px;">نوع الطلب</label>
+            <select id="supportFeedbackType" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #D5CFC5; font-family:'Alexandria',sans-serif; font-size:13px; background:#FFFFFF; color:#1E1F1A;">
+              <option value="suggestion">💡 اقتراح تجربة أو معلم سياحي جديد</option>
+              <option value="complaint">⚠️ ملاحظة أو شكوى حول تجربة</option>
+              <option value="technical">🛠️ مشكلة تقنية في التطبيق</option>
+              <option value="guide_inquiry">🧭 الانضمام كمرشد محلي في مسار</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size:13px; font-weight:600; color:#1E1F1A; display:block; margin-bottom:6px;">رسالتك أو اقتراحك</label>
+            <textarea id="supportFeedbackMsg" rows="3" placeholder="اكتب تفاصيل اقتراحك أو ملاحظتك هنا..." style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #D5CFC5; font-family:'Alexandria',sans-serif; font-size:13px; resize:none; background:#FFFFFF; color:#1E1F1A;"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" style="margin-top: 4px;">
+            <span>إرسال الاقتراح (+15 نقطة)</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="privacyModal" aria-hidden="true" role="dialog" aria-label="الخصوصية والأمان">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">الخصوصية والأمان 🔒</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="privacyModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <p style="font-size:13px; color:#555843; line-height:1.6;">
+          نحن في <strong>مسار</strong> نلتزم بأعلى معايير حماية البيانات والخصوصية وفقاً للمعايير العالمية لحماية بيانات المستخدمين.
+        </p>
+        <ul style="padding-right:20px; font-size:12.5px; color:#6B665F; line-height:1.8;">
+          <li>بياناتك وموقعك مشفرة ولا يتم مشاركتها مع أطراف خارجية.</li>
+          <li>يمكنك حذف حسابك أو تعديل تفضيلاتك في أي وقت من الإعدادات.</li>
+          <li>المحادثات مع دليل مسار محمية ومخصصة لتجربتك فقط.</li>
+        </ul>
+        <button type="button" class="btn-primary" data-close-modal="privacyModal" style="margin-top: 10px;">
+          <span>موافق</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="savedTripsModal" aria-hidden="true" role="dialog" aria-label="رحلتي المحفوظة">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">رحلتي المخططة 🎒</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="savedTripsModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div id="savedTripsList" class="explore-cards-grid">
+
+        </div>
+        <div id="savedTripsEmpty" style="text-align:center; padding:24px 10px;" hidden>
+          <span style="font-size:36px;">🗺️</span>
+          <p style="font-size:13px; color:#6B665F; margin-top:8px;">لم تضف أي تجارب إلى رحلتك بعد.<br>استكشف التجارب واضغط "أضف إلى رحلتي"!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="emergencyModal" aria-hidden="true" role="dialog" aria-label="أرقام الطوارئ">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">أرقام الطوارئ في الأردن 🚨</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="emergencyModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div class="emergency-numbers-list" style="display:flex; flex-direction:column; gap:10px;">
+          <a href="tel:911" class="emergency-call-card" style="display:flex; justify-content:space-between; align-items:center; background:#FFF5F6; border:1px solid #FFD4D8; border-radius:12px; padding:12px 16px; text-decoration:none; color:#85122D;">
+            <div style="text-align:right;">
+              <strong style="font-size:14px; display:block;">الدفاع المدني والأمن العام</strong>
+              <span style="font-size:12px; color:#6B665F;">طوارئ الحوادث والإسعاف الموحد</span>
+            </div>
+            <span style="font-size:18px; font-weight:700; color:#85122D; direction:ltr;">911 📞</span>
+          </a>
+
+          <a href="tel:117777" class="emergency-call-card" style="display:flex; justify-content:space-between; align-items:center; background:#F8F4EE; border:1px solid #E5DFD5; border-radius:12px; padding:12px 16px; text-decoration:none; color:#1E1F1A;">
+            <div style="text-align:right;">
+              <strong style="font-size:14px; display:block;">الشرطة السياحية</strong>
+              <span style="font-size:12px; color:#6B665F;">مساعدة وإرشاد السياح والزوار</span>
+            </div>
+            <span style="font-size:16px; font-weight:700; color:#424628; direction:ltr;">117777 📞</span>
+          </a>
+
+          <a href="tel:064603360" class="emergency-call-card" style="display:flex; justify-content:space-between; align-items:center; background:#F8F4EE; border:1px solid #E5DFD5; border-radius:12px; padding:12px 16px; text-decoration:none; color:#1E1F1A;">
+            <div style="text-align:right;">
+              <strong style="font-size:14px; display:block;">طوارئ وزارة السياحة والآثار</strong>
+              <span style="font-size:12px; color:#6B665F;">استفسارات المواقع السياحية</span>
+            </div>
+            <span style="font-size:15px; font-weight:700; color:#424628; direction:ltr;">06-4603360 📞</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="aboutModal" aria-hidden="true" role="dialog" aria-label="عن مسار">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">عن تطبيق مسار 🇯🇴</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="aboutModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body" style="text-align:center;">
+        <div style="width:64px; height:64px; border-radius:50%; background:#85122D; display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px;">
+          <span style="font-size:32px;">🧭</span>
+        </div>
+        <h3 style="font-size:17px; font-weight:700; margin:0 0 6px 0; color:#85122D;">مسار | Masar</h3>
+        <p style="font-size:12px; color:#8A857D; margin:0 0 14px 0;">الإصدار 2.5.0 (النسخة السياحية الشاملة)</p>
+        <p style="font-size:13px; color:#4A463F; line-height:1.7; text-align:right;">
+          <strong>مسار</strong> هو دليلك السياحي الموثوق لاستكشاف كنوز المملكة الأردنية الهاشمية، من قلاع الشمال الشامخة إلى سحر البحر الميت وأعماق وادي رم والبترا، برفقة مرشدين محليين وتحديات تفاعلية بمكافآت حقيقية.
+        </p>
+        <button type="button" class="btn-primary" data-close-modal="aboutModal" style="margin-top:14px;">
+          <span>إغلاق</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="rateModal" aria-hidden="true" role="dialog" aria-label="قيم التطبيق">
+    <div class="masar-modal-card">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">تقييم تطبيق مسار ⭐</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="rateModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body" style="text-align:center;">
+        <p style="font-size:13.5px; color:#4A463F; margin-bottom:16px;">
+          رأيك يهمنا لمواصلة تحسين تجربة استكشاف الأردن! كم نجمة تمنح مسار؟
+        </p>
+        <div class="star-rating-row" style="font-size:32px; display:flex; justify-content:center; gap:8px; cursor:pointer; margin-bottom:16px;">
+          <span class="rate-star" data-star="1">⭐</span>
+          <span class="rate-star" data-star="2">⭐</span>
+          <span class="rate-star" data-star="3">⭐</span>
+          <span class="rate-star" data-star="4">⭐</span>
+          <span class="rate-star" data-star="5">⭐</span>
+        </div>
+        <button type="button" class="btn-primary" id="btnSubmitRateApp">
+          <span>إرسال التقييم (+10 نقاط)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="jordanMapModal" aria-hidden="true" role="dialog" aria-label="خريطة الأردن التفاعلية">
+    <div class="masar-modal-card" style="max-height: 94dvh;">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">خريطة الأردن التفاعلية 🗺️</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="jordanMapModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+
+        <div class="explore-pills-row" id="mapRegionPills">
+          <button type="button" class="explore-pill active" data-region="all">جميع المناطق</button>
+          <button type="button" class="explore-pill" data-region="north">الشمال (جرش وعجلون) 🌲</button>
+          <button type="button" class="explore-pill" data-region="central">الوسط (عمان والسلط ومادبا) 🏛️</button>
+          <button type="button" class="explore-pill" data-region="south">الجنوب (البترا ورم والعقبة) 🏜️</button>
+        </div>
+
+        <div class="interactive-map-wrapper">
+          <div class="jordan-map-canvas" id="jordanMapCanvas">
+
+            <svg class="jordan-vector-map-bg" viewBox="0 0 340 460" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="jordanLandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FDFBF7"/>
+                  <stop offset="35%" stop-color="#F7EEDF"/>
+                  <stop offset="70%" stop-color="#EFE2CE"/>
+                  <stop offset="100%" stop-color="#E5D3B8"/>
+                </linearGradient>
+                <linearGradient id="deadSeaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#38BDF8"/>
+                  <stop offset="50%" stop-color="#0284C7"/>
+                  <stop offset="100%" stop-color="#0369A1"/>
+                </linearGradient>
+                <linearGradient id="aqabaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284C7"/>
+                  <stop offset="100%" stop-color="#075985"/>
+                </linearGradient>
+                <filter id="jordanShadow" x="-8%" y="-6%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#85122D" flood-opacity="0.09"/>
+                </filter>
+              </defs>
+
+              <path d="M20 60 H320 M20 140 H320 M20 220 H320 M20 300 H320 M20 380 H320" stroke="#E6DCCE" stroke-width="0.75" stroke-dasharray="3 4" opacity="0.6"/>
+              <path d="M60 20 V440 M140 20 V440 M220 20 V440 M300 20 V440" stroke="#E6DCCE" stroke-width="0.75" stroke-dasharray="3 4" opacity="0.6"/>
+
+              <path class="jordan-land-polygon" filter="url(#jordanShadow)" d="
+                M 85 45
+                C 92 40, 115 36, 135 38
+                L 170 42
+                L 230 56
+                L 315 70
+                L 318 115
+                L 268 195
+                L 228 275
+                L 175 365
+                L 128 390
+                L 98 420
+                L 92 400
+                L 86 345
+                L 80 270
+                L 76 245
+                C 74 215, 72 185, 76 160
+                L 79 110
+                L 83 65
+                Z
+              " fill="url(#jordanLandGrad)" stroke="#C8B395" stroke-width="2" stroke-linejoin="round"/>
+
+              <path d="M 85 62 Q 102 88 98 125 T 92 175" fill="none" stroke="#D3BF9F" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+              <path d="M 94 68 Q 110 98 106 138 T 102 185" fill="none" stroke="#D3BF9F" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+              <path d="M 82 215 Q 94 255 90 295 T 88 345" fill="none" stroke="#D3BF9F" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+              <path d="M 92 225 Q 104 270 100 315 T 96 365" fill="none" stroke="#D3BF9F" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+
+              <path d="M 83 65 Q 80 110 76 160" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+              <text x="32" y="112" fill="#0284C7" font-size="8.5" font-family="'Alexandria', sans-serif" font-weight="600" opacity="0.9">نهر الأردن 💧</text>
+
+              <path class="dead-sea-body" d="
+                M 76 160
+                C 70 175, 68 200, 70 225
+                C 72 240, 75 248, 78 248
+                C 81 248, 83 240, 82 225
+                C 81 200, 79 175, 76 160
+                Z
+              " fill="url(#deadSeaGrad)" stroke="#0284C7" stroke-width="1.5"/>
+              <text x="18" y="206" fill="#0369A1" font-size="9" font-family="'Alexandria', sans-serif" font-weight="700">البحر الميت 🌊</text>
+
+              <path d="M 84 415 L 94 425 L 80 445 L 65 445 Z" fill="url(#aqabaGrad)" stroke="#0284C7" stroke-width="1.2"/>
+              <text x="24" y="432" fill="#0284C7" font-size="8.5" font-family="'Alexandria', sans-serif" font-weight="700">خليج العقبة 🤿</text>
+
+              <path class="jordan-trail-path" d="
+                M 96 72
+                L 92 125
+                L 120 132
+                L 110 172
+                L 80 215
+                L 95 265
+                L 88 320
+                L 110 370
+                L 92 412
+              " fill="none" stroke="#85122D" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 4" opacity="0.7"/>
+
+              <text x="195" y="185" fill="#B39E82" font-size="11.5" font-family="'Alexandria', sans-serif" font-weight="600" opacity="0.65">البادية الشرقية 🏜️</text>
+
+              <g transform="translate(285, 385)">
+                <circle cx="0" cy="0" r="17" fill="#FFFFFF" fill-opacity="0.85" stroke="#D5C5B0" stroke-width="1"/>
+                <polygon points="0,-12 3.5,0 0,2.5 -3.5,0" fill="#85122D"/>
+                <polygon points="0,12 3.5,0 0,-2.5 -3.5,0" fill="#A89F91"/>
+                <text x="-3" y="-14" font-size="8.5" font-family="'Alexandria', sans-serif" font-weight="700" fill="#85122D">ش</text>
+              </g>
+            </svg>
+
+            <button type="button" class="map-pin-btn" style="top: 13%; right: 62%;" data-pin-id="jerash" data-region="north" title="جرش وعجلون">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🏛️</span>
+              <span class="map-pin-label">جرش</span>
+            </button>
+
+            <button type="button" class="map-pin-btn active" style="top: 24%; right: 65%;" data-pin-id="salt" data-region="central" title="مدينة السلط">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🏡</span>
+              <span class="map-pin-label">السلط</span>
+            </button>
+
+            <button type="button" class="map-pin-btn" style="top: 26%; right: 54%;" data-pin-id="amman" data-region="central" title="عمان - جبل القلعة">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🌅</span>
+              <span class="map-pin-label">عمّان</span>
+            </button>
+
+            <button type="button" class="map-pin-btn" style="top: 35%; right: 58%;" data-pin-id="madaba" data-region="central" title="مادبا ووادي الهيدان">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🎨</span>
+              <span class="map-pin-label">مادبا</span>
+            </button>
+
+            <button type="button" class="map-pin-btn" style="top: 45%; right: 68%;" data-pin-id="mujib" data-region="central" title="وادي الموجب">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🧗</span>
+              <span class="map-pin-label">الموجب</span>
+            </button>
+
+            <button type="button" class="map-pin-btn" style="top: 56%; right: 63%;" data-pin-id="karak" data-region="south" title="وادي بن حماد والكرك">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🌿</span>
+              <span class="map-pin-label">الكرك</span>
+            </button>
+
+            <button type="button" class="map-pin-btn" style="top: 68%; right: 66%;" data-pin-id="petra" data-region="south" title="البترا والسيق البارد">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🏺</span>
+              <span class="map-pin-label">البترا</span>
+            </button>
+
+            <button type="button" class="map-pin-btn" style="top: 79%; right: 58%;" data-pin-id="rum" data-region="south" title="وادي رم">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">⛺</span>
+              <span class="map-pin-label">وادي رم</span>
+            </button>
+
+            <button type="button" class="map-pin-btn" style="top: 89%; right: 64%;" data-pin-id="aqaba" data-region="south" title="خليج العقبة">
+              <span class="map-pin-pulse"></span>
+              <span class="map-pin-icon">🤿</span>
+              <span class="map-pin-label">العقبة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="map-selected-preview-card" id="mapPinPreviewCard">
+          <div class="map-preview-img-wrap">
+            <img src="assets/images/salt_alleys.jpg" alt="السلط" id="mapPreviewImg" class="map-preview-img">
+          </div>
+          <div class="map-preview-info">
+            <div class="map-preview-tag-row">
+              <span class="map-preview-region" id="mapPreviewRegion">إقليم الوسط</span>
+              <span class="map-preview-distance" id="mapPreviewDistance">تبعد ٣٠ كم من موقعك</span>
+            </div>
+            <h3 class="map-preview-title" id="mapPreviewTitle">مدينة السلط والبيوت التراثية</h3>
+            <p class="map-preview-desc" id="mapPreviewDesc">استكشف شارع الحمام والأزقة القديمة وتجربة الطبخ التراثي مع أم محمد.</p>
+            <div class="map-preview-actions">
+              <button type="button" class="btn-primary-sm" id="btnMapPreviewOpenDetail">عرض المسار</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="tripPlannerModal" aria-hidden="true" role="dialog" aria-label="مخطط الرحلات الذكي">
+    <div class="masar-modal-card" style="max-height: 94dvh;">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">مخطط الرحلات الذكي 🗓️</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="tripPlannerModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+
+        <div class="planner-form-section">
+          <label class="planner-label">مدة الرحلة</label>
+          <div class="planner-options-row" id="plannerDurationOptions">
+            <button type="button" class="planner-pill active" data-duration="1">يوم واحد ⏱️</button>
+            <button type="button" class="planner-pill" data-duration="2">عطلة نهاية أسبوع (يومان) 🏕️</button>
+            <button type="button" class="planner-pill" data-duration="3">3 أيام شاملة 🗺️</button>
+          </div>
+        </div>
+
+        <div class="planner-form-section">
+          <label class="planner-label">طابع ونمط الرحلة</label>
+          <div class="planner-options-row" id="plannerStyleOptions">
+            <button type="button" class="planner-pill active" data-style="adventure">مغامرة وطبيعة 🧗</button>
+            <button type="button" class="planner-pill" data-style="culture">تراث وتاريخ 🏰</button>
+            <button type="button" class="planner-pill" data-style="food">طعام وضيافة 🍽️</button>
+            <button type="button" class="planner-pill" data-style="relax">استجمام وبحر 🌊</button>
+          </div>
+        </div>
+
+        <div class="planner-form-section">
+          <label class="planner-label">الميزانية التقديرية</label>
+          <div class="planner-options-row" id="plannerBudgetOptions">
+            <button type="button" class="planner-pill active" data-budget="economic">اقتصادية (15 - 30 د.أ)</button>
+            <button type="button" class="planner-pill" data-budget="medium">متوسطة (30 - 60 د.أ)</button>
+            <button type="button" class="planner-pill" data-budget="vip">فاخرة (60+ د.أ)</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="btnGenerateTripPlan" style="margin: 8px 0 16px 0;">
+          <span>إعداد خطة الرحلة</span>
+        </button>
+
+        <div class="planner-timeline-result" id="plannerTimelineResult">
+          <div class="planner-summary-badge-card">
+            <div class="planner-summary-header">
+              <h3 class="planner-result-title" id="plannerPlanTitle">رحلة المغامرة والطبيعة في الأردن 🌿</h3>
+              <span class="planner-cost-badge" id="plannerEstCost">التكلفة التقديرية: 25 د.أ</span>
+            </div>
+            <p class="planner-result-desc" id="plannerPlanDesc">خطة مصممة بعناية تجمع بين مسار مائي ساحر، وجبة طعام محلية، ولقاء مع المرشدين.</p>
+          </div>
+
+          <div class="planner-steps-timeline" id="plannerStepsList">
+
+          </div>
+
+          <div class="planner-action-btns-row">
+            <button type="button" class="btn-primary" id="btnSaveGeneratedTrip">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                <polyline points="7 3 7 8 15 8"></polyline>
+              </svg>
+              <span>حفظ في رحلتي</span>
+            </button>
+            <button type="button" class="btn-secondary" id="btnShareTripPlan">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              <span>مشاركة الخطة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="communityFeedModal" aria-hidden="true" role="dialog" aria-label="مجتمع مسار">
+    <div class="masar-modal-card" style="max-height: 94dvh;">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">مجتمع مسار 📸</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="communityFeedModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+
+        <div class="community-challenge-banner">
+          <div class="challenge-banner-content">
+            <span class="challenge-banner-tag">تحدي الأسبوع 🏆</span>
+            <h3 class="challenge-banner-title">أجمل لحظة لغروب الشمس في وادي رم 🌅</h3>
+            <p class="challenge-banner-desc">التقط صورة للغروب وشاركها لفرصة الفوز بـ <strong>+100 نقطة ⭐</strong> ووسام المصور المحترف.</p>
+            <button type="button" class="btn-challenge-upload" id="btnUploadChallengePhoto">
+              <span>📷 شارك صورتك في التحدي</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="community-feed-list" id="communityFeedList">
+
+          <article class="community-post-card">
+            <div class="community-post-header">
+              <div class="community-user-info">
+                <span class="community-avatar">🧕</span>
+                <div>
+                  <strong class="community-user-name">سارة العمري</strong>
+                  <span class="community-time-ago">منذ ساعتين • وادي بن حماد</span>
+                </div>
+              </div>
+              <span class="community-badge-pill">مغامرة 🌿</span>
+            </div>
+            <img src="assets/images/wadi_bin_hammad.jpg" alt="وادي بن حماد" class="community-post-img">
+            <p class="community-post-caption">الهدوء وخرير الماء والنخيل المعلق في وادي بن حماد بالكرك خيالي! تجربة لازم الكل يعيشها 💚</p>
+            <div class="community-post-footer">
+              <button type="button" class="btn-community-like" data-likes="48">
+                <span class="like-heart">❤️</span>
+                <span class="like-count">48</span>
+              </button>
+              <button type="button" class="btn-community-comment">
+                <span>💬 12 تعليق</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="community-post-card">
+            <div class="community-post-header">
+              <div class="community-user-info">
+                <span class="community-avatar">👨‍🌾</span>
+                <div>
+                  <strong class="community-user-name">خالد الحوراني</strong>
+                  <span class="community-time-ago">أمس • ضانا التراثية</span>
+                </div>
+              </div>
+              <span class="community-badge-pill">طبيعة 🦅</span>
+            </div>
+            <img src="assets/images/dana_reserve.jpg" alt="محمية ضانا" class="community-post-img">
+            <p class="community-post-caption">إطلالة ضانا عند الغسق تشرح القلب. جلسنا مع أهل القرية وشربنا الشاي على الحطب ☕🔥</p>
+            <div class="community-post-footer">
+              <button type="button" class="btn-community-like" data-likes="64">
+                <span class="like-heart">❤️</span>
+                <span class="like-count">64</span>
+              </button>
+              <button type="button" class="btn-community-comment">
+                <span>💬 19 تعليق</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="community-post-card">
+            <div class="community-post-header">
+              <div class="community-user-info">
+                <span class="community-avatar">🤿</span>
+                <div>
+                  <strong class="community-user-name">لينا الطراونة</strong>
+                  <span class="community-time-ago">منذ يومين • العقبة</span>
+                </div>
+              </div>
+              <span class="community-badge-pill">بحرية 🌊</span>
+            </div>
+            <img src="assets/images/aqaba_dive.jpg" alt="غوص العقبة" class="community-post-img">
+            <p class="community-post-caption">الغوص في خليج العقبة بجانب حطام الطائرة العسكرية تحت الماء تجربة من عالم آخر! 🐠✈️</p>
+            <div class="community-post-footer">
+              <button type="button" class="btn-community-like" data-likes="89">
+                <span class="like-heart">❤️</span>
+                <span class="like-count">89</span>
+              </button>
+              <button type="button" class="btn-community-comment">
+                <span>💬 24 تعليق</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-modal-backdrop" id="voucherSuccessModal" aria-hidden="true" role="dialog" aria-label="نجاح الاستبدال">
+    <div class="masar-modal-card" style="text-align:center;">
+      <div class="masar-modal-drag-handle"></div>
+      <div class="masar-modal-header">
+        <h2 class="masar-modal-title">تم استبدال الكوبون بنجاح! 🎉</h2>
+        <button type="button" class="btn-modal-close" data-close-modal="voucherSuccessModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="masar-modal-body">
+        <div style="width:72px; height:72px; border-radius:50%; background:#FFF0F3; color:#85122D; display:inline-flex; align-items:center; justify-content:center; font-size:36px; margin:0 auto 10px auto;">
+          🎁
+        </div>
+        <h3 style="font-size:16px; font-weight:700; color:#1E1F1A; margin:0 0 6px 0;" id="voucherModalTitle">خصم 20% إفطار السلط</h3>
+        <p style="font-size:12.5px; color:#6B665F; line-height:1.5;">أظهر هذا الرمز للشريك المحلي عند زيارتك للاستفادة من الميزة فوراً:</p>
+
+        <div class="voucher-code-box">
+          <span class="voucher-code-val" id="voucherModalCode">MASAR-JORDAN-2026</span>
+          <button type="button" class="btn-copy-code" id="btnCopyVoucherCode">نسخ الرمز 📋</button>
+        </div>
+
+        <button type="button" class="btn-primary" data-close-modal="voucherSuccessModal" style="margin-top: 14px;">
+          <span>تم، شكراً</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="masar-toast-container" id="masarToastContainer" aria-live="polite"></div>
+
+  <div class="masar-sparkle-layer" id="masarSparkleLayer"></div>
+
+  <script type="module" src="js/firebase.js?v=22"></script>
+  <script src="js/splash.js?v=22"></script>
+  <script src="js/onboarding.js?v=22"></script>
+  <script src="js/profile.js?v=22"></script>
+  <script src="js/i18n.js?v=22"></script>
+  <script src="js/home.js?v=22"></script>
+  <script src="js/assistant.js?v=22"></script>
+  <script src="js/settings.js?v=22"></script>
+</body>
+</html>
