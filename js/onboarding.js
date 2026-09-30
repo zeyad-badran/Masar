@@ -43,6 +43,15 @@
 
     btnLabel.textContent = 'ابدأ';
     btnNext.setAttribute('aria-label', 'ابدأ');
+
+    try {
+      localStorage.setItem('masar_active_screen', 'onboarding-' + step);
+      if (window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('screen', 'onboarding-' + step);
+        window.history.replaceState(null, '', url.pathname + url.search);
+      }
+    } catch (e) {}
   }
 
   function handleNextClick() {
@@ -104,7 +113,11 @@
   });
 
   const urlParams = new URLSearchParams(window.location.search);
-  const screenParam = urlParams.get('screen');
+  let screenParam = urlParams.get('screen');
+  if (!screenParam) {
+    const saved = localStorage.getItem('masar_active_screen');
+    if (saved && saved.startsWith('onboarding-')) screenParam = saved;
+  }
   if (screenParam) {
     const match = screenParam.match(/onboarding-(\d)/);
     if (match && match[1]) {

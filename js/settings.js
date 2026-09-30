@@ -370,6 +370,10 @@
     if (btnLogout) {
       btnLogout.addEventListener('click', async () => {
         if (window.MasarAudio) window.MasarAudio.playTap();
+        try {
+          localStorage.removeItem('masar_active_screen');
+          localStorage.removeItem('masar_active_exp_id');
+        } catch (e) {}
         if (window.MasarFirebase && typeof window.MasarFirebase.logOut === 'function') {
           await window.MasarFirebase.logOut();
         }
@@ -383,7 +387,8 @@
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('screen') === 'settings') {
+    const screenParam = urlParams.get('screen') || localStorage.getItem('masar_active_screen');
+    if (screenParam === 'settings') {
       if (typeof window.openSettingsScreen === 'function') {
         window.openSettingsScreen();
       }

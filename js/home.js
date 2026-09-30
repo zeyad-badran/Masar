@@ -735,6 +735,28 @@
     });
   }
 
+  function syncUrlAndStorage(screenName, extraParams) {
+    try {
+      localStorage.setItem('masar_active_screen', screenName);
+      if (window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('screen', screenName);
+        if (extraParams) {
+          Object.keys(extraParams).forEach(k => {
+            if (extraParams[k] !== undefined && extraParams[k] !== null && extraParams[k] !== '') {
+              url.searchParams.set(k, extraParams[k]);
+            } else {
+              url.searchParams.delete(k);
+            }
+          });
+        } else {
+          url.searchParams.delete('id');
+        }
+        window.history.replaceState(null, '', url.pathname + url.search);
+      }
+    } catch (e) {}
+  }
+
   function openHomeScreen() {
     hideAllScreens();
     const home = document.getElementById('homeContainer');
@@ -743,6 +765,7 @@
       window.scrollTo(0, 0);
       applyDynamicUserName();
       updateBottomNavActive('navItemHome');
+      syncUrlAndStorage('home');
     }
   }
 
@@ -754,6 +777,7 @@
       window.scrollTo(0, 0);
       applyDynamicUserName();
       updateBottomNavActive('navItemRewards');
+      syncUrlAndStorage('rewards');
     }
   }
 
@@ -765,6 +789,7 @@
       window.scrollTo(0, 0);
       applyDynamicUserName();
       updateBottomNavActive('navItemMap');
+      syncUrlAndStorage('assistant');
     }
   }
 
@@ -776,6 +801,7 @@
       window.scrollTo(0, 0);
       applyDynamicUserName();
       updateBottomNavActive('navItemProfile');
+      syncUrlAndStorage('settings');
     }
   }
 
@@ -883,6 +909,10 @@
     hideAllScreens();
     expContainer.removeAttribute('hidden');
     window.scrollTo(0, 0);
+    syncUrlAndStorage('experience', { id: data && data.id ? data.id : '' });
+    if (data && data.id) {
+      try { localStorage.setItem('masar_active_exp_id', data.id); } catch (e) {}
+    }
 
     const heroImg = document.getElementById('expDetailHeroImg');
     const titleEl = document.getElementById('expDetailTitle');
@@ -1917,11 +1947,21 @@
     });
 
     const urlParams = new URLSearchParams(window.location.search);
-    const screen = urlParams.get('screen');
+    let screen = urlParams.get('screen');
+    if (!screen) {
+      const saved = localStorage.getItem('masar_active_screen');
+      if (saved && saved !== 'splash') screen = saved;
+    }
     if (screen === 'home') openHomeScreen();
     else if (screen === 'rewards' || screen === 'awards') openRewardsScreen();
     else if (screen === 'assistant' || screen === 'map') openAssistantScreen();
     else if (screen === 'settings') openSettingsScreen();
+    else if (screen === 'experience' || screen === 'experienceDetail') {
+      const expId = urlParams.get('id') || localStorage.getItem('masar_active_exp_id') || 'wadi_mujib';
+      const found = EXPERIENCES_CATALOG.find(x => x.id === expId) || EXPERIENCES_CATALOG[0];
+      if (found) openExperienceDetail(found);
+      else openHomeScreen();
+    }
     applyDynamicUserName();
 
     window.addEventListener('masar:languageChanged', () => {

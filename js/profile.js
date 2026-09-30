@@ -119,6 +119,15 @@
     }
 
     profileContainer.removeAttribute('hidden');
+
+    try {
+      localStorage.setItem('masar_active_screen', 'profile-' + step);
+      if (window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('screen', 'profile-' + step);
+        window.history.replaceState(null, '', url.pathname + url.search);
+      }
+    } catch (e) {}
   }
 
   function handleNextProfile() {
@@ -210,6 +219,15 @@
     if (onboarding) onboarding.setAttribute('hidden', '');
     if (loginContainer) loginContainer.removeAttribute('hidden');
     window.scrollTo(0, 0);
+
+    try {
+      localStorage.setItem('masar_active_screen', 'login');
+      if (window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('screen', 'login');
+        window.history.replaceState(null, '', url.pathname + url.search);
+      }
+    } catch (e) {}
   }
 
   function openRegisterScreen() {
@@ -221,6 +239,15 @@
     if (onboarding) onboarding.setAttribute('hidden', '');
     if (registerContainer) registerContainer.removeAttribute('hidden');
     window.scrollTo(0, 0);
+
+    try {
+      localStorage.setItem('masar_active_screen', 'register');
+      if (window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('screen', 'register');
+        window.history.replaceState(null, '', url.pathname + url.search);
+      }
+    } catch (e) {}
   }
 
   window.openLoginScreen = openLoginScreen;
@@ -457,7 +484,13 @@
   });
 
   const urlParams = new URLSearchParams(window.location.search);
-  const screenParam = urlParams.get('screen');
+  let screenParam = urlParams.get('screen');
+  if (!screenParam) {
+    const saved = localStorage.getItem('masar_active_screen');
+    if (saved && (saved === 'login' || saved === 'register' || saved.startsWith('profile-'))) {
+      screenParam = saved;
+    }
+  }
   if (screenParam === 'login') {
     openLoginScreen();
   } else if (screenParam === 'register' || screenParam === 'signup') {

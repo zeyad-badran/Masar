@@ -63,11 +63,18 @@
 
   async function initSplash() {
     const urlParams = new URLSearchParams(window.location.search);
-    const screenParam = urlParams.get('screen');
+    let screenParam = urlParams.get('screen');
+    if (!screenParam) {
+      const savedScreen = localStorage.getItem('masar_active_screen');
+      if (savedScreen && savedScreen !== 'splash') {
+        screenParam = savedScreen;
+      }
+    }
     const forcedState = urlParams.get('state');
 
     if (screenParam && screenParam !== 'splash') {
       splashContainer.style.setProperty('display', 'none', 'important');
+      splashContainer.setAttribute('hidden', '');
       if (screenParam.startsWith('onboarding') && onboardingContainer) {
         onboardingContainer.removeAttribute('hidden');
         window.dispatchEvent(new CustomEvent('masar:bypassSplash', { detail: { screen: screenParam } }));
