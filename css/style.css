@@ -1553,6 +1553,54 @@ body {
   transform: scale(0.96);
 }
 
+.btn-social.btn-blocked,
+.btn-social[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.88;
+}
+
+.btn-social.btn-blocked:hover,
+.btn-social[aria-disabled="true"]:hover {
+  background-color: #FFFFFF;
+  border-color: #EBE5DC;
+}
+
+.btn-social.btn-blocked:active,
+.btn-social[aria-disabled="true"]:active {
+  transform: none;
+}
+
+.vip-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: linear-gradient(135deg, #FFF1D6 0%, #FFE2A4 100%);
+  color: #8C5900;
+  border: 1px solid #FFD074;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 12px;
+  margin-right: 6px;
+  vertical-align: middle;
+  box-shadow: 0 1px 3px rgba(255, 178, 36, 0.2);
+}
+
+.settings-user-email {
+  display: block;
+  font-size: 12px;
+  color: #8C867E;
+  margin-top: 2px;
+  direction: ltr;
+  text-align: right;
+  font-weight: 400;
+}
+
+.leaderboard-row.special-founder-row {
+  background: linear-gradient(90deg, #FFFDF8 0%, #FFF8ED 100%);
+  border: 1.5px solid #F3DAA9;
+}
+
 .home-container {
   width: 100%;
   min-height: 100vh;

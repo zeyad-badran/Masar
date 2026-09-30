@@ -462,9 +462,12 @@
       currentLangLabel.textContent = isEn ? 'English' : 'العربية';
     }
 
-    const storedName = localStorage.getItem('masar_user_name') || 'zeyad';
+    const isSpecial = (localStorage.getItem('masar_user_is_special') === 'true')
+      || ((localStorage.getItem('masar_user_email') || '').toLowerCase().trim() === 'zeyadbadran81@gmail.com');
+    const storedName = localStorage.getItem('masar_user_name') || (isSpecial ? 'Zeyad Badran' : (isEn ? 'Traveler' : 'المسافر'));
+    const vipTag = isSpecial ? ' 👑' : '';
     document.querySelectorAll('.home-greeting-title').forEach(el => {
-      el.textContent = `${dict.greeting_prefix} ${storedName}`;
+      el.textContent = `${dict.greeting_prefix} ${storedName}${vipTag}`;
     });
     document.querySelectorAll('.home-greeting-sub').forEach(el => {
       el.textContent = dict.greeting_sub;
@@ -659,7 +662,7 @@
     }
 
     document.querySelectorAll('.leaderboard-row.highlight-user .leader-name').forEach(el => {
-      el.textContent = `${storedName} ${dict.you_tag}`;
+      el.textContent = `${storedName}${vipTag} ${dict.you_tag}`;
     });
 
     const asTitle = document.querySelector('.assistant-title');

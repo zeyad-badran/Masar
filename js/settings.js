@@ -2,24 +2,51 @@
   'use strict';
 
   function updateSettingsUserDisplay() {
+    const isSpecial = (localStorage.getItem('masar_user_is_special') === 'true')
+      || ((localStorage.getItem('masar_user_email') || '').toLowerCase().trim() === 'zeyadbadran81@gmail.com');
+    const isEn = window.MasarI18n && window.MasarI18n.isEn();
+    const fallback = isSpecial ? 'زياد بدران' : (isEn ? 'Traveler' : 'المسافر');
+    const savedName = localStorage.getItem('masar_user_name') || fallback;
+    const userEmail = localStorage.getItem('masar_user_email') || '';
+
     const userNameEl = document.getElementById('settingsUserName');
     if (userNameEl) {
-      const savedName = localStorage.getItem('masar_user_name') || 'طارق';
-      userNameEl.textContent = savedName;
+      if (isSpecial) {
+        userNameEl.innerHTML = `${savedName} <span class="vip-badge-tag">👑 VIP</span>`;
+      } else {
+        userNameEl.textContent = savedName;
+      }
+    }
+
+    let userEmailEl = document.getElementById('settingsUserEmail');
+    if (!userEmailEl && userNameEl) {
+      userEmailEl = document.createElement('span');
+      userEmailEl.id = 'settingsUserEmail';
+      userEmailEl.className = 'settings-user-email';
+      userNameEl.parentElement.appendChild(userEmailEl);
+    }
+    if (userEmailEl) {
+      userEmailEl.textContent = userEmail;
+      userEmailEl.style.display = userEmail ? 'block' : 'none';
     }
 
     const avatarImgEl = document.getElementById('settingsUserAvatarImg');
     if (avatarImgEl) {
-      const savedAvatar = localStorage.getItem('masar_user_avatar') || 'mascot';
-      const avatarMap = {
-        mascot: 'assets/images/mascot_pin.png',
-        bedouin: 'assets/images/ahmed_host.png',
-        chef: 'assets/images/salt_cooking.jpg',
-        explorer: 'assets/images/sara_host.png',
-        diver: 'assets/images/wadi_mujib.png',
-        artist: 'assets/images/citadel_sunset.jpg'
-      };
-      avatarImgEl.src = avatarMap[savedAvatar] || 'assets/images/mascot_pin.png';
+      const customAvatarUrl = localStorage.getItem('masar_user_avatar_url');
+      if (customAvatarUrl) {
+        avatarImgEl.src = customAvatarUrl;
+      } else {
+        const savedAvatar = localStorage.getItem('masar_user_avatar') || 'mascot';
+        const avatarMap = {
+          mascot: 'assets/images/mascot_pin.png',
+          bedouin: 'assets/images/ahmed_host.png',
+          chef: 'assets/images/salt_cooking.jpg',
+          explorer: 'assets/images/sara_host.png',
+          diver: 'assets/images/wadi_mujib.png',
+          artist: 'assets/images/citadel_sunset.jpg'
+        };
+        avatarImgEl.src = avatarMap[savedAvatar] || 'assets/images/mascot_pin.png';
+      }
     }
   }
 
@@ -40,9 +67,13 @@
     const rowPersonalInfo = document.getElementById('rowPersonalInfo');
 
     function openEditProfile() {
+      const isSpecial = (localStorage.getItem('masar_user_is_special') === 'true')
+        || ((localStorage.getItem('masar_user_email') || '').toLowerCase().trim() === 'zeyadbadran81@gmail.com');
+      const isEn = window.MasarI18n && window.MasarI18n.isEn();
+      const fallback = isSpecial ? 'زياد بدران' : (isEn ? 'Traveler' : 'المسافر');
       const editNameInput = document.getElementById('editNicknameInput');
       if (editNameInput) {
-        editNameInput.value = localStorage.getItem('masar_user_name') || 'طارق';
+        editNameInput.value = localStorage.getItem('masar_user_name') || fallback;
       }
       if (window.openMasarModal) window.openMasarModal('editProfileModal');
       if (window.MasarAudio) window.MasarAudio.playTap();
@@ -371,12 +402,24 @@
       btnLogout.addEventListener('click', async () => {
         if (window.MasarAudio) window.MasarAudio.playTap();
         try {
+          localStorage.removeItem('masar_user_id');
+          localStorage.removeItem('masar_user_email');
+          localStorage.removeItem('masar_user_name');
+          localStorage.removeItem('masar_user_is_special');
+          localStorage.removeItem('masar_user_points');
+          localStorage.removeItem('masar_user_leaderboard_points');
+          localStorage.removeItem('masar_user_avatar_url');
           localStorage.removeItem('masar_active_screen');
           localStorage.removeItem('masar_active_exp_id');
         } catch (e) {}
+
         if (window.MasarFirebase && typeof window.MasarFirebase.logOut === 'function') {
           await window.MasarFirebase.logOut();
         }
+
+        if (typeof window.applyDynamicUserName === 'function') window.applyDynamicUserName();
+        if (typeof window.applyDynamicPoints === 'function') window.applyDynamicPoints();
+
         if (typeof window.openLoginScreen === 'function') {
           const settings = document.getElementById('settingsContainer');
           if (settings) settings.setAttribute('hidden', '');

@@ -818,20 +818,30 @@
   window.openAssistantScreen = openAssistantScreen;
   window.openSettingsScreen = openSettingsScreen;
 
+  function isSpecialUser() {
+    const isSpecialFlag = localStorage.getItem('masar_user_is_special') === 'true';
+    const email = (localStorage.getItem('masar_user_email') || '').toLowerCase().trim();
+    return isSpecialFlag || email === 'zeyadbadran81@gmail.com';
+  }
+
   function getUserPoints() {
+    const isSpecial = isSpecialUser();
     const raw = localStorage.getItem('masar_user_points');
     if (raw !== null && !isNaN(parseInt(raw, 10))) {
-      return Math.max(10000, parseInt(raw, 10));
+      const val = parseInt(raw, 10);
+      return isSpecial ? Math.max(10000, val) : Math.max(0, val);
     }
-    return 10000;
+    return isSpecial ? 10000 : 0;
   }
 
   function getLeaderboardPoints() {
+    const isSpecial = isSpecialUser();
     const raw = localStorage.getItem('masar_user_leaderboard_points');
     if (raw !== null && !isNaN(parseInt(raw, 10))) {
-      return Math.max(10000, parseInt(raw, 10));
+      const val = parseInt(raw, 10);
+      return isSpecial ? Math.max(10000, val) : Math.max(0, val);
     }
-    return 10000;
+    return isSpecial ? 10000 : 0;
   }
 
   function setUserPoints(pts) {
@@ -865,8 +875,11 @@
   }
 
   function applyDynamicPoints() {
+    const isSpecial = isSpecialUser();
+    const isEn = window.MasarI18n && window.MasarI18n.isEn();
     const walletPts = getUserPoints();
     const leaderboardPts = getLeaderboardPoints();
+    const pointsUnit = isEn ? 'pts' : 'نقطة';
 
     document.querySelectorAll('.points-amount, .rewards-points-amount').forEach(el => {
       el.textContent = walletPts;
@@ -874,31 +887,82 @@
     const marketPts = document.getElementById('marketCurrentPointsVal');
     if (marketPts) marketPts.textContent = walletPts;
 
-    const leaderUserPts = document.querySelector('.leaderboard-row.highlight-user .leader-points-num');
-    if (leaderUserPts) leaderUserPts.textContent = leaderboardPts;
-
-    const leaderBadge = document.querySelector('.leaderboard-row.highlight-user .leader-rank-badge, .leaderboard-row.highlight-user .leader-rank-medal');
-    if (leaderBadge) {
-      leaderBadge.textContent = '🥇';
-    }
-
     const highlightRow = document.querySelector('.leaderboard-row.highlight-user');
     const leaderboardCard = document.querySelector('.leaderboard-card');
-    if (highlightRow && leaderboardCard && leaderboardCard.firstElementChild !== highlightRow) {
-      leaderboardCard.insertBefore(highlightRow, leaderboardCard.firstElementChild);
+
+    if (highlightRow && leaderboardCard) {
+      const leaderUserPts = highlightRow.querySelector('.leader-points-num');
+      if (leaderUserPts) leaderUserPts.textContent = leaderboardPts;
+
+      const leaderBadge = highlightRow.querySelector('.leader-rank-badge, .leader-rank-medal');
+
+      if (isSpecial) {
+        if (leaderBadge) {
+          leaderBadge.className = 'leader-rank-medal';
+          leaderBadge.textContent = '🥇';
+        }
+        // Remove separate special founder row if it was rendered
+        const existingFounderRow = document.getElementById('leaderboardSpecialZeyadRow');
+        if (existingFounderRow) existingFounderRow.remove();
+
+        if (leaderboardCard.firstElementChild !== highlightRow) {
+          leaderboardCard.insertBefore(highlightRow, leaderboardCard.firstElementChild);
+        }
+      } else {
+        // Regular user: Render Zeyad Badran as the Special #1 Account
+        let zeyadRow = document.getElementById('leaderboardSpecialZeyadRow');
+        if (!zeyadRow) {
+          zeyadRow = document.createElement('div');
+          zeyadRow.id = 'leaderboardSpecialZeyadRow';
+          zeyadRow.className = 'leaderboard-row special-founder-row';
+          zeyadRow.innerHTML = `
+            <div class="leader-user">
+              <span class="leader-rank-medal">🥇</span>
+              <span class="leader-name">${isEn ? 'Zeyad Badran 👑 (Special VIP)' : 'زياد بدران 👑 (الحساب المميز)'}</span>
+            </div>
+            <div class="leader-points">
+              <span class="leader-points-num">10000</span>
+              <span class="leader-points-lbl">${pointsUnit}</span>
+            </div>
+          `;
+        }
+
+        if (leaderboardCard.firstElementChild !== zeyadRow) {
+          leaderboardCard.insertBefore(zeyadRow, leaderboardCard.firstElementChild);
+        }
+
+        // Rank the regular user dynamically according to their points
+        if (leaderboardPts >= 1240) {
+          if (leaderBadge) { leaderBadge.className = 'leader-rank-medal'; leaderBadge.textContent = '🥈'; }
+          leaderboardCard.insertBefore(highlightRow, zeyadRow.nextSibling);
+        } else if (leaderboardPts >= 1080) {
+          if (leaderBadge) { leaderBadge.className = 'leader-rank-medal'; leaderBadge.textContent = '🥉'; }
+          const saraRow = leaderboardCard.children[1];
+          leaderboardCard.insertBefore(highlightRow, saraRow ? saraRow.nextSibling : null);
+        } else {
+          if (leaderBadge) {
+            leaderBadge.className = 'leader-rank-badge badge-gray';
+            leaderBadge.textContent = '6';
+          }
+          leaderboardCard.appendChild(highlightRow);
+        }
+      }
     }
   }
 
   function applyDynamicUserName() {
     const isEn = window.MasarI18n && window.MasarI18n.isEn();
-    const storedName = localStorage.getItem('masar_user_name') || 'zeyad';
+    const isSpecial = isSpecialUser();
+    const storedName = localStorage.getItem('masar_user_name') || (isSpecial ? 'زياد بدران' : (isEn ? 'Traveler' : 'المسافر'));
     const greetingPrefix = isEn ? 'Welcome' : 'مرحبا';
     const youTag = isEn ? '(You)' : '(أنت)';
+    const vipTag = isSpecial ? ' 👑' : '';
+
     document.querySelectorAll('.home-greeting-title').forEach(el => {
-      el.textContent = `${greetingPrefix} ${storedName}`;
+      el.textContent = `${greetingPrefix} ${storedName}${vipTag}`;
     });
     document.querySelectorAll('.leaderboard-row.highlight-user .leader-name').forEach(el => {
-      el.textContent = `${storedName} ${youTag}`;
+      el.textContent = `${storedName}${vipTag} ${youTag}`;
     });
     const profileNameEl = document.querySelector('.profile-user-name');
     if (profileNameEl) profileNameEl.textContent = storedName;
@@ -1974,10 +2038,12 @@
       else openHomeScreen();
     }
     try {
-      const existingPts = localStorage.getItem('masar_user_points');
-      if (!existingPts || parseInt(existingPts, 10) < 10000) {
-        localStorage.setItem('masar_user_points', '10000');
-        localStorage.setItem('masar_user_leaderboard_points', '10000');
+      if (isSpecialUser()) {
+        const existingPts = getUserPoints();
+        if (existingPts < 10000) {
+          localStorage.setItem('masar_user_points', '10000');
+          localStorage.setItem('masar_user_leaderboard_points', '10000');
+        }
       }
     } catch (e) {}
 

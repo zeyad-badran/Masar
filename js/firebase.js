@@ -39,35 +39,61 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const SPECIAL_ADMIN_EMAIL = 'zeyadbadran81@gmail.com';
+
+function isSpecialEmail(email) {
+  if (!email || typeof email !== 'string') return false;
+  return email.trim().toLowerCase() === SPECIAL_ADMIN_EMAIL;
+}
+
 const MasarDB = {
   app,
   auth,
   db,
   currentUser: null,
+  SPECIAL_ADMIN_EMAIL,
+
+  isSpecialEmail(email) {
+    return isSpecialEmail(email);
+  },
 
   async signUp(email, password, displayName = 'Traveler') {
     try {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       const user = cred.user;
-      await updateProfile(user, { displayName });
+      const isSpecial = isSpecialEmail(email);
+      const chosenName = displayName || (isSpecial ? 'Zeyad Badran' : 'Traveler');
 
-      await setDoc(doc(db, 'users', user.uid), {
+      try {
+        await updateProfile(user, { displayName: chosenName });
+      } catch (e) {
+        console.warn('Profile displayName update notice:', e);
+      }
+
+      const initialPoints = isSpecial ? 10000 : 0;
+      const profileData = {
         uid: user.uid,
-        displayName: displayName || 'Traveler',
+        displayName: chosenName,
         email: user.email,
-        points: 10000,
-        streakWeeks: 0,
+        points: initialPoints,
+        isSpecialAccount: isSpecial,
+        role: isSpecial ? 'admin' : 'traveler',
+        streakWeeks: isSpecial ? 5 : 0,
         createdAt: serverTimestamp(),
         preferences: {},
-        unlockedBadges: ['first_hike', 'gourmet', 'photographer']
-      });
+        unlockedBadges: isSpecial
+          ? ['first_hike', 'gourmet', 'photographer', '7_days', 'bedouin', 'legend']
+          : ['first_hike']
+      };
+
+      await setDoc(doc(db, 'users', user.uid), profileData);
 
       await setDoc(doc(db, 'user_challenges', `${user.uid}_shrak_bread`), {
         userId: user.uid,
         challengeId: 'shrak_bread',
-        stepsCompleted: 2,
+        stepsCompleted: isSpecial ? 2 : 0,
         totalSteps: 3,
-        progressPercent: 67,
+        progressPercent: isSpecial ? 67 : 0,
         isCompleted: false,
         updatedAt: serverTimestamp()
       });
@@ -75,14 +101,14 @@ const MasarDB = {
       await setDoc(doc(db, 'user_challenges', `${user.uid}_wadi_hidan`), {
         userId: user.uid,
         challengeId: 'wadi_hidan',
-        stepsCompleted: 1,
+        stepsCompleted: isSpecial ? 1 : 0,
         totalSteps: 4,
-        progressPercent: 25,
+        progressPercent: isSpecial ? 25 : 0,
         isCompleted: false,
         updatedAt: serverTimestamp()
       });
 
-      return { success: true, user };
+      return { success: true, user, isSpecial, profileData };
     } catch (error) {
       console.error('Sign Up Error:', error);
       return { success: false, error: error.message };
@@ -92,7 +118,45 @@ const MasarDB = {
   async signIn(email, password) {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
-      return { success: true, user: cred.user };
+      const user = cred.user;
+      const isSpecial = isSpecialEmail(user.email);
+
+      const userDocRef = doc(db, 'users', user.uid);
+      const snap = await getDoc(userDocRef);
+      let profileData = null;
+
+      if (snap.exists()) {
+        profileData = snap.data();
+        if (isSpecial) {
+          if (!profileData.isSpecialAccount || (profileData.points || 0) < 10000) {
+            await updateDoc(userDocRef, {
+              isSpecialAccount: true,
+              role: 'admin',
+              points: Math.max(10000, profileData.points || 0)
+            });
+            profileData.points = Math.max(10000, profileData.points || 0);
+            profileData.isSpecialAccount = true;
+          }
+        }
+      } else {
+        profileData = {
+          uid: user.uid,
+          displayName: user.displayName || (isSpecial ? 'Zeyad Badran' : 'Traveler'),
+          email: user.email,
+          points: isSpecial ? 10000 : 0,
+          isSpecialAccount: isSpecial,
+          role: isSpecial ? 'admin' : 'traveler',
+          streakWeeks: isSpecial ? 5 : 0,
+          createdAt: serverTimestamp(),
+          preferences: {},
+          unlockedBadges: isSpecial
+            ? ['first_hike', 'gourmet', 'photographer', '7_days', 'bedouin', 'legend']
+            : ['first_hike']
+        };
+        await setDoc(userDocRef, profileData);
+      }
+
+      return { success: true, user, isSpecial, profileData };
     } catch (error) {
       console.error('Sign In Error:', error);
       return { success: false, error: error.message };
@@ -102,9 +166,50 @@ const MasarDB = {
   async signInWithGoogle() {
     try {
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
       const res = await signInWithPopup(auth, provider);
-      return { success: true, user: res.user };
+      const user = res.user;
+      const isSpecial = isSpecialEmail(user.email);
+
+      const userDocRef = doc(db, 'users', user.uid);
+      const snap = await getDoc(userDocRef);
+      let profileData = null;
+
+      if (snap.exists()) {
+        profileData = snap.data();
+        if (isSpecial) {
+          if (!profileData.isSpecialAccount || (profileData.points || 0) < 10000) {
+            await updateDoc(userDocRef, {
+              isSpecialAccount: true,
+              role: 'admin',
+              points: Math.max(10000, profileData.points || 0)
+            });
+            profileData.points = Math.max(10000, profileData.points || 0);
+            profileData.isSpecialAccount = true;
+          }
+        }
+      } else {
+        profileData = {
+          uid: user.uid,
+          displayName: user.displayName || (isSpecial ? 'Zeyad Badran' : 'Traveler'),
+          email: user.email,
+          photoURL: user.photoURL || '',
+          points: isSpecial ? 10000 : 0,
+          isSpecialAccount: isSpecial,
+          role: isSpecial ? 'admin' : 'traveler',
+          streakWeeks: isSpecial ? 5 : 0,
+          createdAt: serverTimestamp(),
+          preferences: {},
+          unlockedBadges: isSpecial
+            ? ['first_hike', 'gourmet', 'photographer', '7_days', 'bedouin', 'legend']
+            : ['first_hike']
+        };
+        await setDoc(userDocRef, profileData);
+      }
+
+      return { success: true, user, isSpecial, profileData };
     } catch (error) {
+      console.error('Google Sign In Error:', error);
       return { success: false, error: error.message };
     }
   },
@@ -112,6 +217,7 @@ const MasarDB = {
   async logOut() {
     try {
       await signOut(auth);
+      MasarDB.currentUser = null;
       return { success: true };
     } catch (error) {
       console.error('Log Out Error:', error);
@@ -402,10 +508,10 @@ const MasarDB = {
       const lbSnap = await getDocs(collection(db, 'leaderboard'));
       if (lbSnap.empty) {
         const leaderboard = [
-          { id: 'rank_1', name: 'سارة العمري', points: 1240, rank: 1, medal: '🥇' },
-          { id: 'rank_2', name: 'خالد الحوراني', points: 1080, rank: 2, medal: '🥈' },
-          { id: 'rank_3', name: 'لينا الطراونة', points: 970, rank: 3, medal: '🥉' },
-          { id: 'rank_4', name: (window.MasarI18n && window.MasarI18n.isEn()) ? 'Traveler (You)' : 'كمال (أنت)', points: 10000, rank: 4, medal: '4', isCurrent: true },
+          { id: 'rank_1', name: 'زياد بدران 👑', points: 10000, rank: 1, medal: '🥇', email: 'zeyadbadran81@gmail.com', isSpecial: true },
+          { id: 'rank_2', name: 'سارة العمري', points: 1240, rank: 2, medal: '🥈' },
+          { id: 'rank_3', name: 'خالد الحوراني', points: 1080, rank: 3, medal: '🥉' },
+          { id: 'rank_4', name: 'لينا الطراونة', points: 970, rank: 4, medal: '4' },
           { id: 'rank_5', name: 'عمر الشوبكي', points: 520, rank: 5, medal: '5' }
         ];
 

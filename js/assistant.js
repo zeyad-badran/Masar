@@ -318,8 +318,10 @@
       showTypingIndicator();
 
       const isEn = window.MasarI18n && window.MasarI18n.isEn();
-      const userName = localStorage.getItem('masar_user_name') || 'zeyad';
-      const livePoints = window.getUserPoints ? window.getUserPoints().toString() : (localStorage.getItem('masar_user_points') || '10000');
+      const isSpecial = (localStorage.getItem('masar_user_is_special') === 'true')
+        || ((localStorage.getItem('masar_user_email') || '').toLowerCase().trim() === 'zeyadbadran81@gmail.com');
+      const userName = localStorage.getItem('masar_user_name') || (isSpecial ? 'زياد بدران' : (isEn ? 'Traveler' : 'المسافر'));
+      const livePoints = window.getUserPoints ? window.getUserPoints().toString() : (localStorage.getItem('masar_user_points') || (isSpecial ? '10000' : '0'));
 
       const currentLang = localStorage.getItem('masar_language') || 'ar';
       let responded = false;

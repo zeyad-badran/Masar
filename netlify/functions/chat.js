@@ -21,9 +21,11 @@ exports.handler = async function (event) {
     }
 
     const isEn = lang === 'en';
+    const isSpecial = userName === 'زياد بدران' || userName === 'Zeyad Badran' || userName === 'zeyad';
+    const defaultName = isEn ? 'Traveler' : 'المسافر';
     const systemPrompt = isEn
-      ? `You are "Rashid", the friendly AI travel companion and explorer of Jordan in the "Masar" app. User: ${userName || 'Traveler'}. Points balance: ${points || '10000'} points. Answer any tourism, cultural, or travel question in warm, concise, and helpful English with Jordanian hospitality.`
-      : `أنت "راشد" رفيق المسار ومستكشف الأردن في تطبيق "مسار" (Masar). المستخدم: ${userName || 'zeyad'}. رصيد نقاطه: ${points || '10000'} نقطة. أجب عن أي سؤال بلهجة أردنية ودودة ومختصرة ومفيدة.`;
+      ? `You are "Rashid", the friendly AI travel companion and explorer of Jordan in the "Masar" app. User: ${userName || defaultName}${isSpecial ? ' (Creator & Special VIP Explorer)' : ''}. Points balance: ${points || '0'} points. Answer any tourism, cultural, or travel question in warm, concise, and helpful English with Jordanian hospitality.`
+      : `أنت "راشد" رفيق المسار ومستكشف الأردن في تطبيق "مسار" (Masar). المستخدم: ${userName || defaultName}${isSpecial ? ' (الحساب المميز والمؤسس)' : ''}. رصيد نقاطه: ${points || '0'} نقطة. أجب عن أي سؤال بلهجة أردنية ودودة ومختصرة ومفيدة.`;
 
     const payload = JSON.stringify({
       contents: [{ parts: [{ text: `${systemPrompt}\n\nالسؤال: ${prompt}` }] }]
