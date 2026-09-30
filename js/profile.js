@@ -453,7 +453,7 @@
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       if (!localStorage.getItem('masar_user_name')) {
-        const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : (window.MasarI18n && window.MasarI18n.isEn() ? 'Traveler' : 'كمال');
+        const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : 'zeyad';
         localStorage.setItem('masar_user_name', fallbackName);
       }
       if (typeof window.openHomeScreen === 'function') {
@@ -467,7 +467,7 @@
   socialFacebookButtons.forEach(btn => btn.addEventListener('click', (e) => {
     e.preventDefault();
     if (!localStorage.getItem('masar_user_name')) {
-      const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : (window.MasarI18n && window.MasarI18n.isEn() ? 'Traveler' : 'كمال');
+      const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : 'zeyad';
       localStorage.setItem('masar_user_name', fallbackName);
     }
     if (typeof window.openHomeScreen === 'function') window.openHomeScreen();
@@ -475,7 +475,7 @@
   socialAppleButtons.forEach(btn => btn.addEventListener('click', (e) => {
     e.preventDefault();
     if (!localStorage.getItem('masar_user_name')) {
-      const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : (window.MasarI18n && window.MasarI18n.isEn() ? 'Traveler' : 'كمال');
+      const fallbackName = (travelerProfile && travelerProfile.nickname) ? travelerProfile.nickname : 'zeyad';
       localStorage.setItem('masar_user_name', fallbackName);
     }
     if (typeof window.openHomeScreen === 'function') window.openHomeScreen();

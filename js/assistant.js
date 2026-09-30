@@ -318,7 +318,7 @@
       showTypingIndicator();
 
       const isEn = window.MasarI18n && window.MasarI18n.isEn();
-      const userName = localStorage.getItem('masar_user_name') || (isEn ? 'Traveler' : 'كمال');
+      const userName = localStorage.getItem('masar_user_name') || 'zeyad';
       const livePoints = window.getUserPoints ? window.getUserPoints().toString() : (localStorage.getItem('masar_user_points') || '10000');
 
       const currentLang = localStorage.getItem('masar_language') || 'ar';

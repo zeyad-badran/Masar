@@ -877,18 +877,21 @@
     const leaderUserPts = document.querySelector('.leaderboard-row.highlight-user .leader-points-num');
     if (leaderUserPts) leaderUserPts.textContent = leaderboardPts;
 
-    const leaderBadge = document.querySelector('.leaderboard-row.highlight-user .leader-rank-badge');
-    if (leaderBadge && leaderboardPts >= 1240) {
-      leaderBadge.textContent = '🥇 1';
-      leaderBadge.classList.remove('badge-gray');
-      leaderBadge.style.backgroundColor = '#D4AF37';
-      leaderBadge.style.color = '#FFFFFF';
+    const leaderBadge = document.querySelector('.leaderboard-row.highlight-user .leader-rank-badge, .leaderboard-row.highlight-user .leader-rank-medal');
+    if (leaderBadge) {
+      leaderBadge.textContent = '🥇';
+    }
+
+    const highlightRow = document.querySelector('.leaderboard-row.highlight-user');
+    const leaderboardCard = document.querySelector('.leaderboard-card');
+    if (highlightRow && leaderboardCard && leaderboardCard.firstElementChild !== highlightRow) {
+      leaderboardCard.insertBefore(highlightRow, leaderboardCard.firstElementChild);
     }
   }
 
   function applyDynamicUserName() {
     const isEn = window.MasarI18n && window.MasarI18n.isEn();
-    const storedName = localStorage.getItem('masar_user_name') || (isEn ? 'Traveler' : 'كمال');
+    const storedName = localStorage.getItem('masar_user_name') || 'zeyad';
     const greetingPrefix = isEn ? 'Welcome' : 'مرحبا';
     const youTag = isEn ? '(You)' : '(أنت)';
     document.querySelectorAll('.home-greeting-title').forEach(el => {

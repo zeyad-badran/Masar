@@ -462,7 +462,7 @@
       currentLangLabel.textContent = isEn ? 'English' : 'العربية';
     }
 
-    const storedName = localStorage.getItem('masar_user_name') || (isEn ? 'Traveler' : 'كمال');
+    const storedName = localStorage.getItem('masar_user_name') || 'zeyad';
     document.querySelectorAll('.home-greeting-title').forEach(el => {
       el.textContent = `${dict.greeting_prefix} ${storedName}`;
     });
