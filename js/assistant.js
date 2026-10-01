@@ -136,14 +136,7 @@
         const cleanPlainText = text.replace(/<[^>]*>/g, '');
         row.innerHTML = `
           <div class="chat-avatar-mini">
-            <svg width="24" height="24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-              <rect x="10" y="12" width="60" height="56" rx="28" fill="#85122D"/>
-              <polygon points="40,15 44,20 40,25 36,20" fill="#FFFFFF"/>
-              <circle cx="40" cy="44" r="19" fill="#FFFFFF"/>
-              <path d="M31 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M44 42c1-2.5 4-2.5 5 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M35 48c2 3 8 3 10 0" stroke="#1E1F1A" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
+            <img src="assets/images/char_screen2.png" alt="راشد" class="chat-avatar-img">
           </div>
           <div class="chat-bubble-content bot-bubble">
             <p>${text.replace(/\n/g, '<br>')}</p>
@@ -182,10 +175,7 @@
       currentTypingEl.className = 'typing-indicator-row';
       currentTypingEl.innerHTML = `
         <div class="chat-avatar-mini">
-          <svg width="24" height="24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-            <rect x="10" y="12" width="60" height="56" rx="28" fill="#85122D"/>
-            <circle cx="40" cy="44" r="19" fill="#FFFFFF"/>
-          </svg>
+          <img src="assets/images/char_screen2.png" alt="راشد" class="chat-avatar-img">
         </div>
         <div class="typing-dots">
           <div class="typing-dot"></div>
@@ -320,7 +310,7 @@
       const isEn = window.MasarI18n && window.MasarI18n.isEn();
       const isSpecial = (localStorage.getItem('masar_user_is_special') === 'true')
         || ((localStorage.getItem('masar_user_email') || '').toLowerCase().trim() === 'zeyadbadran81@gmail.com');
-      const userName = localStorage.getItem('masar_user_name') || (isSpecial ? 'زياد بدران' : (isEn ? 'Traveler' : 'المسافر'));
+      const userName = localStorage.getItem('masar_user_name') || (isSpecial ? 'zeyad' : (isEn ? 'Traveler' : 'المسافر'));
       const livePoints = window.getUserPoints ? window.getUserPoints().toString() : (localStorage.getItem('masar_user_points') || (isSpecial ? '10000' : '0'));
 
       const currentLang = localStorage.getItem('masar_language') || 'ar';

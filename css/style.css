@@ -3352,15 +3352,24 @@ html[data-theme="dark"] .badge-icon-circle.beige-bg {
 }
 
 .assistant-header-badge {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: #F8ECEE;
+  background: #FDF2F4;
+  border: 1.5px solid #F1DCE0;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(133, 18, 45, 0.12);
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.assistant-header-mascot-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(133, 18, 45, 0.15));
 }
 
 .assistant-chat-card {
@@ -3383,12 +3392,38 @@ html[data-theme="dark"] .badge-icon-circle.beige-bg {
   margin-bottom: 20px;
 }
 
+.assistant-main-mascot-badge {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF7F8 0%, #FBEBED 100%);
+  border: 2px solid #EFE3E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(133, 18, 45, 0.1);
+  margin-bottom: 8px;
+  transition: transform 0.25s ease;
+  overflow: hidden;
+}
+
+.assistant-main-mascot-badge:hover {
+  transform: scale(1.05);
+}
+
+.assistant-main-mascot-img {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(133, 18, 45, 0.18));
+}
+
 .assistant-card-subtitle {
   font-family: 'Alexandria', sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #555843;
-  margin: 10px 0 0 0;
+  margin: 8px 0 0 0;
   line-height: 1.3;
 }
 
@@ -3411,10 +3446,24 @@ html[data-theme="dark"] .badge-icon-circle.beige-bg {
 }
 
 .chat-avatar-mini {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FDF2F4;
+  border: 1.5px solid #F1DCE0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 3px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(133, 18, 45, 0.08);
+}
+
+.chat-avatar-img {
   width: 26px;
   height: 26px;
-  flex-shrink: 0;
-  margin-top: 4px;
+  object-fit: contain;
 }
 
 .chat-bubble-content {
