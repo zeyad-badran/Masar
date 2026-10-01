@@ -464,7 +464,7 @@
 
     const isSpecial = (localStorage.getItem('masar_user_is_special') === 'true')
       || ((localStorage.getItem('masar_user_email') || '').toLowerCase().trim() === 'zeyadbadran81@gmail.com');
-    const storedName = localStorage.getItem('masar_user_name') || (isSpecial ? 'Zeyad Badran' : (isEn ? 'Traveler' : 'المسافر'));
+    const storedName = isSpecial ? 'zeyad' : (localStorage.getItem('masar_user_name') || (isEn ? 'Traveler' : 'المسافر'));
     const vipTag = isSpecial ? ' 👑' : '';
     document.querySelectorAll('.home-greeting-title').forEach(el => {
       el.textContent = `${dict.greeting_prefix} ${storedName}${vipTag}`;

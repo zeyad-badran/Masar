@@ -5,8 +5,7 @@
     const isSpecial = (localStorage.getItem('masar_user_is_special') === 'true')
       || ((localStorage.getItem('masar_user_email') || '').toLowerCase().trim() === 'zeyadbadran81@gmail.com');
     const isEn = window.MasarI18n && window.MasarI18n.isEn();
-    const fallback = isSpecial ? 'زياد بدران' : (isEn ? 'Traveler' : 'المسافر');
-    const savedName = localStorage.getItem('masar_user_name') || fallback;
+    const savedName = isSpecial ? 'zeyad' : (localStorage.getItem('masar_user_name') || (isEn ? 'Traveler' : 'المسافر'));
     const userEmail = localStorage.getItem('masar_user_email') || '';
 
     const userNameEl = document.getElementById('settingsUserName');

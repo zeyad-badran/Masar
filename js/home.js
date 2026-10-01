@@ -918,7 +918,7 @@
           zeyadRow.innerHTML = `
             <div class="leader-user">
               <span class="leader-rank-medal">🥇</span>
-              <span class="leader-name">${isEn ? 'Zeyad Badran 👑 (Special VIP)' : 'زياد بدران 👑 (الحساب المميز)'}</span>
+              <span class="leader-name">${isEn ? 'zeyad 👑 (Special VIP)' : 'zeyad 👑 (الحساب المميز)'}</span>
             </div>
             <div class="leader-points">
               <span class="leader-points-num">10000</span>
@@ -953,7 +953,7 @@
   function applyDynamicUserName() {
     const isEn = window.MasarI18n && window.MasarI18n.isEn();
     const isSpecial = isSpecialUser();
-    const storedName = localStorage.getItem('masar_user_name') || (isSpecial ? 'زياد بدران' : (isEn ? 'Traveler' : 'المسافر'));
+    const storedName = isSpecial ? 'zeyad' : (localStorage.getItem('masar_user_name') || (isEn ? 'Traveler' : 'المسافر'));
     const greetingPrefix = isEn ? 'Welcome' : 'مرحبا';
     const youTag = isEn ? '(You)' : '(أنت)';
     const vipTag = isSpecial ? ' 👑' : '';

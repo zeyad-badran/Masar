@@ -293,10 +293,12 @@
       ? window.MasarFirebase.isSpecialEmail(user.email)
       : (user.email && user.email.toLowerCase().trim() === 'zeyadbadran81@gmail.com');
 
-    const name = (profileData && profileData.displayName)
-      || user.displayName
-      || fallbackName
-      || (isSpecial ? 'زياد بدران' : (user.email ? user.email.split('@')[0] : 'المسافر'));
+    const name = isSpecial
+      ? 'zeyad'
+      : ((profileData && profileData.displayName)
+        || user.displayName
+        || fallbackName
+        || (user.email ? user.email.split('@')[0] : 'المسافر'));
 
     const pts = (profileData && typeof profileData.points === 'number')
       ? profileData.points
@@ -375,8 +377,8 @@
         if (res && res.success && res.user) {
           saveAuthenticatedUserSession(res.user, res.profileData, travelerProfile.nickname);
 
-          const welcomeName = res.profileData?.displayName || res.user.displayName || (res.isSpecial ? 'زياد بدران' : 'المسافر');
           const isSpecial = res.isSpecial;
+          const welcomeName = isSpecial ? 'zeyad' : (res.profileData?.displayName || res.user.displayName || 'المسافر');
           if (window.showMasarToast) {
             window.showMasarToast(
               isSpecial ? `مرحباً بك يا ${welcomeName}! 👑 الحساب المميز` : `مرحباً بك يا ${welcomeName}! تم تسجيل الدخول بنجاح`,
@@ -564,7 +566,7 @@
           saveAuthenticatedUserSession(res.user, res.profileData, travelerProfile.nickname);
 
           const isSpecial = res.isSpecial;
-          const welcomeName = res.profileData?.displayName || res.user.displayName || (isSpecial ? 'زياد بدران' : 'المسافر');
+          const welcomeName = isSpecial ? 'zeyad' : (res.profileData?.displayName || res.user.displayName || 'المسافر');
           const greetingMsg = isSpecial
             ? `مرحباً بك يا ${welcomeName}! 👑 تم الدخول إلى حسابك الخاص المميز (10,000 نقطة)`
             : `مرحباً بك يا ${welcomeName}! تم تسجيل الدخول بحسابك بنجاح ✨`;

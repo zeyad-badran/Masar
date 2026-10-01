@@ -62,7 +62,7 @@ const MasarDB = {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       const user = cred.user;
       const isSpecial = isSpecialEmail(email);
-      const chosenName = displayName || (isSpecial ? 'Zeyad Badran' : 'Traveler');
+      const chosenName = isSpecial ? 'zeyad' : (displayName || 'Traveler');
 
       try {
         await updateProfile(user, { displayName: chosenName });
@@ -128,20 +128,31 @@ const MasarDB = {
       if (snap.exists()) {
         profileData = snap.data();
         if (isSpecial) {
-          if (!profileData.isSpecialAccount || (profileData.points || 0) < 10000) {
-            await updateDoc(userDocRef, {
-              isSpecialAccount: true,
-              role: 'admin',
-              points: Math.max(10000, profileData.points || 0)
-            });
-            profileData.points = Math.max(10000, profileData.points || 0);
+          const updatePayload = {};
+          if (profileData.displayName !== 'zeyad') {
+            updatePayload.displayName = 'zeyad';
+            profileData.displayName = 'zeyad';
+          }
+          if (!profileData.isSpecialAccount) {
+            updatePayload.isSpecialAccount = true;
             profileData.isSpecialAccount = true;
+          }
+          if (profileData.role !== 'admin') {
+            updatePayload.role = 'admin';
+            profileData.role = 'admin';
+          }
+          if ((profileData.points || 0) < 10000) {
+            updatePayload.points = Math.max(10000, profileData.points || 0);
+            profileData.points = Math.max(10000, profileData.points || 0);
+          }
+          if (Object.keys(updatePayload).length > 0) {
+            await updateDoc(userDocRef, updatePayload);
           }
         }
       } else {
         profileData = {
           uid: user.uid,
-          displayName: user.displayName || (isSpecial ? 'Zeyad Badran' : 'Traveler'),
+          displayName: isSpecial ? 'zeyad' : (user.displayName || 'Traveler'),
           email: user.email,
           points: isSpecial ? 10000 : 0,
           isSpecialAccount: isSpecial,
@@ -178,20 +189,31 @@ const MasarDB = {
       if (snap.exists()) {
         profileData = snap.data();
         if (isSpecial) {
-          if (!profileData.isSpecialAccount || (profileData.points || 0) < 10000) {
-            await updateDoc(userDocRef, {
-              isSpecialAccount: true,
-              role: 'admin',
-              points: Math.max(10000, profileData.points || 0)
-            });
-            profileData.points = Math.max(10000, profileData.points || 0);
+          const updatePayload = {};
+          if (profileData.displayName !== 'zeyad') {
+            updatePayload.displayName = 'zeyad';
+            profileData.displayName = 'zeyad';
+          }
+          if (!profileData.isSpecialAccount) {
+            updatePayload.isSpecialAccount = true;
             profileData.isSpecialAccount = true;
+          }
+          if (profileData.role !== 'admin') {
+            updatePayload.role = 'admin';
+            profileData.role = 'admin';
+          }
+          if ((profileData.points || 0) < 10000) {
+            updatePayload.points = Math.max(10000, profileData.points || 0);
+            profileData.points = Math.max(10000, profileData.points || 0);
+          }
+          if (Object.keys(updatePayload).length > 0) {
+            await updateDoc(userDocRef, updatePayload);
           }
         }
       } else {
         profileData = {
           uid: user.uid,
-          displayName: user.displayName || (isSpecial ? 'Zeyad Badran' : 'Traveler'),
+          displayName: isSpecial ? 'zeyad' : (user.displayName || 'Traveler'),
           email: user.email,
           photoURL: user.photoURL || '',
           points: isSpecial ? 10000 : 0,
@@ -508,7 +530,7 @@ const MasarDB = {
       const lbSnap = await getDocs(collection(db, 'leaderboard'));
       if (lbSnap.empty) {
         const leaderboard = [
-          { id: 'rank_1', name: 'زياد بدران 👑', points: 10000, rank: 1, medal: '🥇', email: 'zeyadbadran81@gmail.com', isSpecial: true },
+          { id: 'rank_1', name: 'zeyad 👑', points: 10000, rank: 1, medal: '🥇', email: 'zeyadbadran81@gmail.com', isSpecial: true },
           { id: 'rank_2', name: 'سارة العمري', points: 1240, rank: 2, medal: '🥈' },
           { id: 'rank_3', name: 'خالد الحوراني', points: 1080, rank: 3, medal: '🥉' },
           { id: 'rank_4', name: 'لينا الطراونة', points: 970, rank: 4, medal: '4' },
